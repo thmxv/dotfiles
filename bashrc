@@ -79,19 +79,12 @@ function ps1_cwd {
     local bg_color="$1"
     local fg_color="$2"
     local content="\w"
+    if [ ! -w "$PWD" ]; then
+        content+=" ${PL_SYMBOLS[read_only]}"
+    fi
     PS1+="$(section_end $fg_color $bg_color)"
     PS1+="$(section_content $fg_color $bg_color " $content ")"
     __last_color="$bg_color"
-}
-
-function ps1_read_only {
-    local bg_color="$1"
-    local fg_color="$2"
-    if [ ! -w "$PWD" ]; then
-        PS1+="$(section_end $fg_color $bg_color)"
-        PS1+="$(section_content $fg_color $bg_color " ${PL_SYMBOLS[read_only]} ")"
-        __last_color="$bg_color"
-    fi
 }
 
 function ps1_git {
@@ -147,12 +140,11 @@ function diy_ps1 {
 
     # set the prompt as we want
     ps1_newline Default Default
-    ps1_user Blue Default
+    ps1_user Blue Black
     ps1_cwd White Black
-    ps1_read_only White Black
-    ps1_git Yellow Default
+    ps1_git Yellow Black
     ps1_newline Default Default
-    ps1_return_code Red Default
+    ps1_return_code Red Black
     ps1_prompt White Black
 
     # final end point
@@ -206,15 +198,4 @@ declare -A PL_SYMBOLS=(
 )
 
 PROMPT_COMMAND="diy_ps1; $PROMPT_COMMAND"
-
-# TODO: prowerline separator, git branch icon, color variables
-#PS1=''
-#PS1+='\[\033]0;$TITLEPREFIX:$PWD\007\]'     # set terminal title
-#PS1+='\[\033[41m\]`nonzero_return`\[\033[40m\]\n'
-#PS1+='\[\033[32m\]\u@\h '
-#PS1+='\[\033[35m\]$MSYSTEM '
-#PS1+='\[\033[33m\]\w'
-#PS1+='\[\033[36m\]`__git_ps1`'
-#PS1+='\[\033[0m\]\n$'
-
 
