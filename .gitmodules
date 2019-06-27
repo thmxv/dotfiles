@@ -34,3 +34,11 @@
 	path = vim/pack/installed-packages/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
 	branch = master
+[submodule "vim/pack/installed-packages/start/vim-surround"]
+	path = vim/pack/installed-packages/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-repeat"]
+	path = vim/pack/installed-packages/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+	branch = master
