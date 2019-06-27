@@ -1,0 +1,36 @@
+[submodule "vim/pack/installed-packages/start/nerdtree"]
+	path = vim/pack/installed-packages/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+	branch = master
+[submodule "vim/pack/installed-packages/start/nerdtree-git-plugin"]
+	path = vim/pack/installed-packages/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+	branch = master
+[submodule "vim/pack/installed-packages/start/tagbar"]
+	path = vim/pack/installed-packages/start/tagbar
+	url = https://github.com/majutsushi/tagbar
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-airline"]
+	path = vim/pack/installed-packages/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-airline-themes"]
+	path = vim/pack/installed-packages/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-bufferline"]
+	path = vim/pack/installed-packages/start/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-solarized8"]
+	path = vim/pack/installed-packages/start/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-sensible"]
+	path = vim/pack/installed-packages/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+	branch = master
+[submodule "vim/pack/installed-packages/start/vim-sleuth"]
+	path = vim/pack/installed-packages/start/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git
+	branch = master
