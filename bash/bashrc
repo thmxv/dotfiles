@@ -27,7 +27,7 @@ case "${unameOut}" in
 esac
 
 alias ls='ls --color=auto'
-alias grep='grep -n --color'
+alias grep='grep --color=auto'
 #alias vim='nvim'
 
 export VISUAL=vim
