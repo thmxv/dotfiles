@@ -15,8 +15,11 @@ set hidden          " Allow openning/switch buffer when current buffer is edited
 set history=50      " Commands in search history
 set undolevels=1000 " Levels of undo
 set title           " Change terminal's title
-"set visualbell      " No beep
+set visualbell      " No beep
 "set noerrorbells    " No beep
+
+" Clear search higlight on ESC
+nnoremap <esc> :noh<return><esc>
 
 " Theme
 set termguicolors   " Use true colors
