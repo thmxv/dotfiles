@@ -17,7 +17,11 @@ set undolevels=1000 " Levels of undo
 set title           " Change terminal's title
 set visualbell      " No beep
 "set noerrorbells    " No beep
+set cursorline
 
+" Quick open/reload settings
+nnoremap <leader>ev :vsp ~/.vimrc<CR>
+nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 " Clear search higlight on ESC
 nnoremap <esc> :noh<return><esc>
 
