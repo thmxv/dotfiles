@@ -14,12 +14,12 @@ unameOut="$(uname -s)"
 case "${unameOut}" in
     MINGW*)
         eval `dircolors ~/.dir_colors`
-        alias python='winpty python.exe'
+        #alias python='winpty python.exe'
         #alias nvim='winpty nvim.exe'
         #alias vim='nvim'
         ;;
     Linux*)
-        alias vim='nvim'
+        #alias vim='nvim'
         ;;
     Darwin*)    ;;
     CYGWIN*)    ;;
@@ -28,7 +28,7 @@ esac
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-#alias vim='nvim'
+alias vim='nvim'
 
 export VISUAL=vim
 export EDITOR=vim
