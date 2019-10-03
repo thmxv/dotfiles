@@ -19,6 +19,9 @@ set visualbell      " No beep
 "set noerrorbells    " No beep
 set cursorline
 
+"Ctrl-C Ctrl-V"
+:source $VIMRUNTIME/mswin.vim
+
 " Quick open/reload settings
 nnoremap <leader>ev :vsp ~/.vimrc<CR>
 nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
