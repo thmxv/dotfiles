@@ -1,1 +1,1 @@
-Guifont Anonymous\ Pro\ for\ Powerline:h14
+Guifont! Anonymous\ Pro\ for\ Powerline:h14
