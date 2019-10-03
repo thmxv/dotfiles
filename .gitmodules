@@ -42,3 +42,6 @@
 	path = vim/pack/installed-packages/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
 	branch = master
+[submodule "vim/pack/installed-packages/start/rust.vim"]
+	path = vim/pack/installed-packages/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
