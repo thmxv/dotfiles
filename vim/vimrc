@@ -20,10 +20,10 @@ set visualbell      " No beep
 set cursorline
 
 "Ctrl-C Ctrl-V"
-:source $VIMRUNTIME/mswin.vim
+":source $VIMRUNTIME/mswin.vim
 
 " Quick open/reload settings
-nnoremap <leader>ev :vsp ~/.vimrc<CR>
+nnoremap <leader>ev :e ~/.vimrc<CR>
 nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 " Clear search higlight on ESC
 nnoremap <esc> :noh<return><esc>
@@ -59,3 +59,9 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" Run clang-format on save
+function! Formatonsave()
+  let l:formatdiff = 1
+  pyf /usr/share/clang/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp,*.cxx call Formatonsave()
