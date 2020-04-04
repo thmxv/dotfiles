@@ -19,6 +19,14 @@ case "${unameOut}" in
         #alias vim='nvim'
         ;;
     Linux*)
+        . /etc/profile.d/vte.sh
+        # Launch tmux, only if interactive and inside X
+        if [[ $DISPLAY ]]; then
+            [[ -z "$TMUX" ]] && exec tmux
+        fi
+        # cross toolchain
+        . $HOME/Projects/sp3/current_toolchains/set_path.sh
+
         #alias vim='nvim'
         ;;
     Darwin*)    ;;
@@ -26,9 +34,11 @@ case "${unameOut}" in
     *)   ;;
 esac
 
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vim='nvim'
+alias tmux='tmux -2'
 
 export VISUAL=vim
 export EDITOR=vim
