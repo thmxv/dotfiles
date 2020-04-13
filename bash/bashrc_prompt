@@ -165,5 +165,5 @@ declare -A PL_SYMBOLS=(
 [return_code]="⚑"
 )
 
-PROMPT_COMMAND="diy_ps1; $PROMPT_COMMAND"
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }"diy_ps1; "
 

@@ -37,15 +37,21 @@ let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
 
+" make term load bashrc
+let &shell='/usr/bin/bash --login'
+
+" fzf fuzzy finder
+nnoremap <C-p> :<C-u>FZF<CR>
+
 " NERDree config
 " Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :<C-u>NERDTreeToggle<CR>
 " Exit if last window is NERDTree
 autocmd bufenter *
     \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
     \ | q
     \ | endif
-" Open automatically if not file is given or opening a directory
+" Open automatically if no file is given or opening a directory
 autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter *
@@ -57,7 +63,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :<C-u>TagbarOpenAutoClose<CR>
 
 " Run clang-format on save
 function! Formatonsave()
@@ -65,3 +71,6 @@ function! Formatonsave()
   pyf /usr/share/clang/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp,*.cxx call Formatonsave()
+
+" No line number in terminal
+au TermOpen * setlocal nonumber norelativenumber

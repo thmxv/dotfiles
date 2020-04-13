@@ -6,10 +6,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -f $HOME/.bash/bashrc_prompt ]; then
-    . $HOME/.bash/bashrc_prompt
-fi
-
 unameOut="$(uname -s)"
 case "${unameOut}" in
     MINGW*)
@@ -20,10 +16,12 @@ case "${unameOut}" in
         ;;
     Linux*)
         . /etc/profile.d/vte.sh
+
         # Launch tmux, only if interactive and inside X
-        if [[ $DISPLAY ]]; then
-            [[ -z "$TMUX" ]] && exec tmux
-        fi
+        #if [[ $DISPLAY ]]; then
+        #    [[ -z "$TMUX" ]] && exec tmux
+        #fi
+
         # cross toolchain
         . $HOME/Projects/sp3/current_toolchains/set_path.sh
 
@@ -33,6 +31,10 @@ case "${unameOut}" in
     CYGWIN*)    ;;
     *)   ;;
 esac
+
+if [ -f $HOME/.bash/bashrc_prompt ]; then
+    . $HOME/.bash/bashrc_prompt
+fi
 
 
 alias ls='ls --color=auto'

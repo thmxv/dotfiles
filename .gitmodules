@@ -54,3 +54,12 @@
 [submodule "vim/pack/installed-packages/start/fzf.vim"]
 	path = vim/pack/installed-packages/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule "vim/pack/installed-packages/start/coc.nvim"]
+	path = vim/pack/installed-packages/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule "vim/pack/installed-packages/start/nerdcommenter"]
+	path = vim/pack/installed-packages/start/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vim/pack/installed-packages/start/delimitmate"]
+	path = vim/pack/installed-packages/start/delimitmate
+	url = https://github.com/raimondi/delimitmate
