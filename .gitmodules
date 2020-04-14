@@ -18,10 +18,6 @@
 	path = vim/pack/installed-packages/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 	branch = master
-[submodule "vim/pack/installed-packages/start/vim-bufferline"]
-	path = vim/pack/installed-packages/start/vim-bufferline
-	url = https://github.com/bling/vim-bufferline.git
-	branch = master
 [submodule "vim/pack/installed-packages/start/vim-solarized8"]
 	path = vim/pack/installed-packages/start/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
