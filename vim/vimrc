@@ -28,7 +28,8 @@ nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 nnoremap <esc> :noh<return><esc>
 
 " Terminal navigation utilities
-tnoremap <Esc> <C-\><C-n>:set number<CR>
+" tnoremap <Esc> <C-\><C-n>:set number<CR>
+tnoremap <Esc> <C-\><C-n>
 "tnoremap <M-[> <Esc>
 "tnoremap <C-v><Esc> <Esc>
 autocmd TermOpen * setlocal nonumber norelativenumber
@@ -71,6 +72,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " fzf fuzzy finder
 nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-b> :<C-u>Buffers<CR>
 
 " NERDree config
 " Ctrl+n
@@ -221,8 +223,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')

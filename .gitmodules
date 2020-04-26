@@ -53,3 +53,6 @@
 [submodule "vim/pack/installed-packages/start/delimitmate"]
 	path = vim/pack/installed-packages/start/delimitmate
 	url = https://github.com/raimondi/delimitmate
+[submodule "vim/pack/installed-packages/start/vim-bufkill"]
+	path = vim/pack/installed-packages/start/vim-bufkill
+	url = https://github.com/qpkorr/vim-bufkill
