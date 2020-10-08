@@ -115,7 +115,7 @@ function! Formatonsave()
   let l:formatdiff = 1
   pyf /usr/share/clang/clang-format.py
 endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp,*.cxx call Formatonsave()
+" autocmd BufWritePre *.h,*.cc,*.cpp,*.cxx call Formatonsave()
 
 " CoC config
 " TextEdit might fail if hidden is not set.
