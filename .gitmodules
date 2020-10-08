@@ -1,58 +1,58 @@
 [submodule "vim/pack/installed-packages/start/nerdtree"]
-	path = vim/pack/installed-packages/start/nerdtree
+	path = .vim/pack/installed-packages/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 	branch = master
 [submodule "vim/pack/installed-packages/start/nerdtree-git-plugin"]
-	path = vim/pack/installed-packages/start/nerdtree-git-plugin
+	path = .vim/pack/installed-packages/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
 	branch = master
 [submodule "vim/pack/installed-packages/start/tagbar"]
-	path = vim/pack/installed-packages/start/tagbar
+	path = .vim/pack/installed-packages/start/tagbar
 	url = https://github.com/majutsushi/tagbar
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-airline"]
-	path = vim/pack/installed-packages/start/vim-airline
+	path = .vim/pack/installed-packages/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-airline-themes"]
-	path = vim/pack/installed-packages/start/vim-airline-themes
+	path = .vim/pack/installed-packages/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-solarized8"]
-	path = vim/pack/installed-packages/start/vim-solarized8
+	path = .vim/pack/installed-packages/start/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-sensible"]
-	path = vim/pack/installed-packages/start/vim-sensible
+	path = .vim/pack/installed-packages/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-sleuth"]
-	path = vim/pack/installed-packages/start/vim-sleuth
+	path = .vim/pack/installed-packages/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-surround"]
-	path = vim/pack/installed-packages/start/vim-surround
+	path = .vim/pack/installed-packages/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-repeat"]
-	path = vim/pack/installed-packages/start/vim-repeat
+	path = .vim/pack/installed-packages/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
 	branch = master
 [submodule "vim/pack/installed-packages/start/rust.vim"]
-	path = vim/pack/installed-packages/start/rust.vim
+	path = .vim/pack/installed-packages/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
 [submodule "vim/pack/installed-packages/start/fzf.vim"]
-	path = vim/pack/installed-packages/start/fzf.vim
+	path = .vim/pack/installed-packages/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule "vim/pack/installed-packages/start/coc.nvim"]
-	path = vim/pack/installed-packages/start/coc.nvim
+	path = .vim/pack/installed-packages/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 [submodule "vim/pack/installed-packages/start/nerdcommenter"]
-	path = vim/pack/installed-packages/start/nerdcommenter
+	path = .vim/pack/installed-packages/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
 [submodule "vim/pack/installed-packages/start/delimitmate"]
-	path = vim/pack/installed-packages/start/delimitmate
+	path = .vim/pack/installed-packages/start/delimitmate
 	url = https://github.com/raimondi/delimitmate
 [submodule "vim/pack/installed-packages/start/vim-bufkill"]
-	path = vim/pack/installed-packages/start/vim-bufkill
+	path = .vim/pack/installed-packages/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill
