@@ -23,7 +23,9 @@ case "${unameOut}" in
         #fi
 
         # cross toolchain
-        . $HOME/Projects/sp3/current_toolchains/set_path.sh
+        if [ -f $HOME/Projects/sp3/current_toolchains/set_path.sh ]; then
+            . $HOME/Projects/sp3/current_toolchains/set_path.sh
+        fi
 
         #alias vim='nvim'
         ;;
