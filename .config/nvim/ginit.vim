@@ -1,1 +1,1 @@
-Guifont! Anonymous\ Pro\ for\ Powerline:h14
+Guifont! Anonymice\ Nerd\ Font:h14
