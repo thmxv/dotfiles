@@ -62,3 +62,6 @@
 [submodule ".vim/pack/installed-packages/start/nvim-lspinstall"]
 	path = .vim/pack/installed-packages/opt/nvim-lspinstall
 	url = https://github.com/kabouzeid/nvim-lspinstall.git
+[submodule ".vim/pack/installed-packages/start/vim-fugitive"]
+	path = .vim/pack/installed-packages/start/vim-fugitive
+	url = ../../tpope/vim-fugitive.git
