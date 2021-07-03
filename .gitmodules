@@ -56,3 +56,6 @@
 [submodule ".vim/pack/installed-packages/start/nvim-treesitter"]
 	path = .vim/pack/installed-packages/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".vim/pack/installed-packages/start/telescope.nvim"]
+	path = .vim/pack/installed-packages/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
