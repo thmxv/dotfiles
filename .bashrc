@@ -6,34 +6,37 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
+# Platform specific stuff
 unameOut="$(uname -s)"
 case "${unameOut}" in
     MINGW*)
         eval `dircolors ~/.dir_colors`
-        #alias python='winpty python.exe'
-        #alias nvim='winpty nvim.exe'
-        #alias vim='nvim'
+
         ;;
     Linux*)
         . /etc/profile.d/vte.sh
-
-        # Launch tmux, only if interactive and inside X
-        #if [[ $DISPLAY ]]; then
-        #    [[ -z "$TMUX" ]] && exec tmux
-        #fi
 
         # cross toolchain
         if [ -f $HOME/Projects/sp3/current_toolchains/set_path.sh ]; then
             . $HOME/Projects/sp3/current_toolchains/set_path.sh
         fi
 
-        #alias vim='nvim'
+        # launch ssh-agent if not running yet and set env to use it
+        if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+            ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+        fi
+        if [[ ! "$SSH_AUTH_SOCK" ]]; then
+            source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+        fi
+
         ;;
     Darwin*)    ;;
     CYGWIN*)    ;;
     *)   ;;
 esac
 
+# Powerline style promp
 if [ -f $HOME/.bash/bashrc_prompt ]; then
     . $HOME/.bash/bashrc_prompt
 fi
@@ -44,10 +47,11 @@ alias grep='grep --color=auto'
 alias vim='nvim'
 alias tmux='tmux -2'
 
+# alias for dotfiles git and autocomplete alias
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 complete -F _complete_alias config
 
 
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 
