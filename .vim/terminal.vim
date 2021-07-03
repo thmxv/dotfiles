@@ -10,10 +10,10 @@ if(exists("##TermEnter"))
   autocmd TermEnter * setlocal nonumber norelativenumber
 endif
 if(exists("##TerminalOpen"))
-  autocmd TermOpen * setlocal nonumber norelativenumber
+  autocmd TerminalOpen * setlocal nonumber norelativenumber
 endif
 if(exists("##TerminalEnter"))
-  autocmd TermEnter * setlocal nonumber norelativenumber
+  autocmd TerminalEnter * setlocal nonumber norelativenumber
 endif
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
