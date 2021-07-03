@@ -127,5 +127,5 @@ function! Formatonsave()
 endfunction
 " autocmd BufWritePre *.h,*.cc,*.cpp,*.cxx call Formatonsave()
 
-source ~/.vim/coc.vim
+" source ~/.vim/coc.vim
 
