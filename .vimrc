@@ -32,16 +32,16 @@ nnoremap <esc> :noh<return><esc>
 tnoremap <Esc> <C-\><C-n>
 "tnoremap <M-[> <Esc>
 "tnoremap <C-v><Esc> <Esc>
-if(has("TermOpen"))
+if(exists("##TermOpen"))
   autocmd TermOpen * setlocal nonumber norelativenumber
 endif
-if(has("TermEnter"))
+if(exists("##TermEnter"))
   autocmd TermEnter * setlocal nonumber norelativenumber
 endif
-if(has("TerminalOpen"))
+if(exists("##TerminalOpen"))
   autocmd TermOpen * setlocal nonumber norelativenumber
 endif
-if(has("TerminalEnter"))
+if(exists("##TerminalEnter"))
   autocmd TermEnter * setlocal nonumber norelativenumber
 endif
 tnoremap <C-h> <C-\><C-n><C-w>h
