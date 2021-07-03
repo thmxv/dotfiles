@@ -59,3 +59,6 @@
 [submodule ".vim/pack/installed-packages/start/telescope.nvim"]
 	path = .vim/pack/installed-packages/start/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule ".vim/pack/installed-packages/start/nvim-lspinstall"]
+	path = .vim/pack/installed-packages/start/nvim-lspinstall
+	url = https://github.com/kabouzeid/nvim-lspinstall.git
