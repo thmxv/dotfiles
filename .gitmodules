@@ -50,3 +50,6 @@
 [submodule "vim/pack/installed-packages/start/vim-bufkill"]
 	path = .vim/pack/installed-packages/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill
+[submodule ".vim/pack/installed-packages/start/nvim-lspconfig"]
+	path = .vim/pack/installed-packages/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
