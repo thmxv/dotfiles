@@ -1,5 +1,3 @@
-" Ctrl+n
-map <C-n> :<C-u>NERDTreeToggle<CR>
 
 " Exit if last window is NERDTree
 autocmd bufenter *
