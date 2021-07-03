@@ -65,3 +65,6 @@
 [submodule ".vim/pack/installed-packages/start/vim-fugitive"]
 	path = .vim/pack/installed-packages/start/vim-fugitive
 	url = ../../tpope/vim-fugitive.git
+[submodule ".vim/pack/installed-packages/start/vim-smoothie"]
+	path = .vim/pack/installed-packages/start/vim-smoothie
+	url = ../../psliwka/vim-smoothie
