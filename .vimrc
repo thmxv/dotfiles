@@ -81,8 +81,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " fzf fuzzy finder
-nnoremap <C-p> :<C-u>FZF<CR>
-nnoremap <C-b> :<C-u>Buffers<CR>
+" nnoremap <C-p> :<C-u>FZF<CR>
+" nnoremap <C-b> :<C-u>Buffers<CR>
 
 " NERDree config
 " Ctrl+n
