@@ -27,13 +27,20 @@ nnoremap <leader>ev :e ~/.vimrc<CR>
 nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 " Clear search higlight on ESC
 nnoremap <esc> :noh<return><esc>
-" Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Tagbar
 nmap <F8> :<C-u>TagbarOpenAutoClose<CR>
+
+if(has("nvim"))
+  packadd nvim-lspconfig
+  packadd nvim-lspinstall
+  packadd nvim-treesitter
+  packadd telescope.nvim
+  " Telescope
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
+  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+endif
 
 " Source other config files
 source ~/.vim/color-theme.vim
