@@ -130,5 +130,15 @@ function! Formatonsave()
 endfunction
 " autocmd BufWritePre *.h,*.cc,*.cpp,*.cxx call Formatonsave()
 
+" nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  }
+}
+EOF
+
 " source ~/.vim/coc.vim
 
