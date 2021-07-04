@@ -43,10 +43,12 @@ else
   packadd nvim-lspinstall
   packadd nvim-treesitter
   packadd telescope.nvim
+  packadd nvim-compe
 
   " Source other config files
   luafile ~/.vim/treesitter.lua
   luafile ~/.vim/lsp.lua
+  luafile ~/.vim/compe.lua
 
 endif
 

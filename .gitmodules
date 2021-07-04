@@ -68,3 +68,6 @@
 [submodule ".vim/pack/installed-packages/start/vim-smoothie"]
 	path = .vim/pack/installed-packages/start/vim-smoothie
 	url = ../../psliwka/vim-smoothie
+[submodule ".vim/pack/installed-packages/opt/nvim-compe"]
+	path = .vim/pack/installed-packages/opt/nvim-compe
+	url = ../../hrsh7th/nvim-compe
