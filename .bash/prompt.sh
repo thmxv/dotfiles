@@ -33,7 +33,7 @@ function ps1_newline {
     if [ -n "$__last_color" ]; then
         PS1+="$(section_end $__last_color 'Default')"
     fi
-    PS1+="\n"
+    PS1+="${PL_COLORS[Color_Off]}\n"
     unset __last_color
 }
 
@@ -81,7 +81,7 @@ function ps1_git {
 }
 
 function ps1_return_code {
-    if [ ! "$__return_code" -eq 0 ]; then
+    if [ "$__return_code" -ne 0 ]; then
         local bg_color="$1"
         local fg_color="$2"
         local content=" ${PL_SYMBOLS[return_code]} $__return_code "
@@ -105,7 +105,7 @@ function ps1_prompt {
 }
 
 function diy_ps1 {
-    __return_code=$?    # save the return code
+    __return_code="$?"    # save the return code
     PS1=""              # reset the command prompt
     #PS1+="\[\033]0;$TITLEPREFIX:$PWD\007\]" # set terminal title
 
@@ -165,5 +165,5 @@ declare -A PL_SYMBOLS=(
 [return_code]="⚑"
 )
 
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }"diy_ps1; "
+PROMPT_COMMAND="diy_ps1; ${PROMPT_COMMAND}"
 

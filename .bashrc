@@ -37,8 +37,8 @@ case "${unameOut}" in
 esac
 
 # Powerline style promp
-if [ -f $HOME/.bash/bashrc_prompt ]; then
-    . $HOME/.bash/bashrc_prompt
+if [ -f $HOME/.bash/prompt.sh ]; then
+    . $HOME/.bash/prompt.sh
 fi
 
 
