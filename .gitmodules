@@ -19,7 +19,7 @@
 	url = https://github.com/vim-airline/vim-airline-themes
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-solarized8"]
-	path = .vim/pack/installed-packages/start/vim-solarized8
+	path = .vim/pack/installed-packages/opt/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
 	branch = master
 [submodule "vim/pack/installed-packages/start/vim-sensible"]
@@ -71,3 +71,6 @@
 [submodule ".vim/pack/installed-packages/opt/nvim-compe"]
 	path = .vim/pack/installed-packages/opt/nvim-compe
 	url = ../../hrsh7th/nvim-compe
+[submodule ".vim/pack/installed-packages/opt/nvim-solarized-lua"]
+	path = .vim/pack/installed-packages/opt/nvim-solarized-lua
+	url = git@github.com:ishan9299/nvim-solarized-lua.git

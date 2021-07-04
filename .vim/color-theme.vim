@@ -1,6 +1,10 @@
 set termguicolors   " Use true colors
 set background=dark
-colorscheme solarized8
+if(!has("nvim"))
+  colorscheme solarized8
+else
+  colorscheme solarized
+endif
 
 " Statusbar theme
 let g:airline_theme='solarized'

@@ -34,6 +34,7 @@ source ~/.vim/nerdcommenter.vim
 if(!has("nvim"))
 
   " Vim only
+  packadd vim-solarized8
   " TODO FZF
 
 else
@@ -44,6 +45,7 @@ else
   packadd nvim-treesitter
   packadd telescope.nvim
   packadd nvim-compe
+  packadd nvim-solarized-lua
 
   " Source other config files
   luafile ~/.vim/treesitter.lua
