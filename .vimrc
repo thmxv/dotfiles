@@ -21,13 +21,6 @@ set cursorline
 set splitright
 set splitbelow
 
-" Start installed plugins that are for Neo-vim only
-if(has("nvim"))
-  packadd nvim-lspconfig
-  packadd nvim-lspinstall
-  packadd nvim-treesitter
-  packadd telescope.nvim
-endif
 
 " Source other config files
 source ~/.vim/key-mappings.vim
@@ -37,8 +30,23 @@ source ~/.vim/airline.vim
 source ~/.vim/clang-format.vim
 source ~/.vim/nerdtree.vim
 source ~/.vim/nerdcommenter.vim
-if(has("nvim"))
+
+if(!has("nvim"))
+
+  " Vim only
+  " TODO FZF
+
+else
+
+  " Neovim only
+  packadd nvim-lspconfig
+  packadd nvim-lspinstall
+  packadd nvim-treesitter
+  packadd telescope.nvim
+
+  " Source other config files
   luafile ~/.vim/treesitter.lua
   luafile ~/.vim/lsp.lua
+
 endif
 

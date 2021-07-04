@@ -28,7 +28,7 @@ nnoremap <leader>t :split \| ter<CR>a
 nnoremap <leader>vt :vsplit \| ter<CR>a
 
 " make term load bashrc
-let &shell='/usr/bin/bash --login'
+" let &shell='/usr/bin/bash --login'
 
 " remove line number
 if(exists("##TermOpen"))
