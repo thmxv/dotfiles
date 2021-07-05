@@ -1,169 +1,87 @@
-#!/bin/bash
-
-# DIY PS1 prompt pureline/powerline style
-
-# returns a string with the powerline symbol for a section end
-# arg: $1 is foreground color of the next section
-# arg: $2 is background color of the next section
-function section_end {
-    if [ "$__last_color" == "$2" ]; then
-        # Section colors are the same, use a foreground separator
-        local end_char="${PL_SYMBOLS[soft_separator]}"
-        local fg="$1"
-    else
-        # section colors are different, use a background separator
-        local end_char="${PL_SYMBOLS[hard_separator]}"
-        local fg="$__last_color"
-    fi
-    if [ -n "$__last_color" ]; then
-        echo "${PL_COLORS[$fg]}${PL_COLORS[On_$2]}$end_char"
-    fi
-}
-
-# returns a string with background and foreground colours set
-# arg: $1 foreground color
-# arg: $2 background color
-# arg: $3 content
-function section_content {
-    echo "${PL_COLORS[$1]}${PL_COLORS[On_$2]}$3"
-}
-
-# append to prompt: end the current promptline and start a newline
-function ps1_newline {
-    if [ -n "$__last_color" ]; then
-        PS1+="$(section_end $__last_color 'Default')"
-    fi
-    PS1+="${PL_COLORS[Color_Off]}\n"
-    unset __last_color
-}
-
-function ps1_user {
-    local bg_color="$1"
-    local fg_color="$2"
-    local content="\u@\h"
-    PS1+="$(section_end $fg_color $bg_color)"
-    PS1+="$(section_content $fg_color $bg_color " $content ")"
-    __last_color="$bg_color"
-}
-
-function ps1_cwd {
-    local bg_color="$1"
-    local fg_color="$2"
-    local content="\w"
-    if [ ! -w "$PWD" ]; then
-        content+=" ${PL_SYMBOLS[read_only]}"
-    fi
-    PS1+="$(section_end $fg_color $bg_color)"
-    PS1+="$(section_content $fg_color $bg_color " $content ")"
-    __last_color="$bg_color"
-}
-
-function ps1_git {
-    local git_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-    if [ -n "$git_branch" ]; then
-        local bg_color="$1"
-        local fg_color="$2"
-        local content="${PL_SYMBOLS[git_branch]} $git_branch"
-
-        if [ -n "$(git status --porcelain)" ]; then
-            if [ -n "$PL_GIT_DIRTY_FG" ]; then
-                fg_color="$PL_GIT_DIRTY_FG"
-            fi
-            if [ -n "$PL_GIT_DIRTY_BG" ]; then
-                bg_color="$PL_GIT_DIRTY_BG"
-            fi
-        fi
-
-        PS1+="$(section_end $fg_color $bg_color)"
-        PS1+="$(section_content $fg_color $bg_color " $content ")"
-        __last_color="$bg_color"
-    fi
-}
-
-function ps1_return_code {
-    if [ "$__return_code" -ne 0 ]; then
-        local bg_color="$1"
-        local fg_color="$2"
-        local content=" ${PL_SYMBOLS[return_code]} $__return_code "
-        PS1+="$(section_end $fg_color $bg_color)"
-        PS1+="$(section_content $fg_color $bg_color "$content")"
-        __last_color="$bg_color"
-    fi
-}
-
-function prompt_char {
-    [[ ${EUID} -eq 0 ]] && echo "#" || echo "$"
-}
-
-function ps1_prompt {
-    local bg_color="$1"
-    local fg_color="$2"
-    local content=" $(prompt_char) "
-    PS1+="$(section_end $fg_color $bg_color)"
-    PS1+="$(section_content $fg_color $bg_color "$content")"
-    __last_color="$bg_color"
-}
-
-function diy_ps1 {
-    __return_code="$?"    # save the return code
-    PS1=""              # reset the command prompt
-    #PS1+="\[\033]0;$TITLEPREFIX:$PWD\007\]" # set terminal title
-
-    # set the prompt as we want
-    ps1_newline Default Default
-    ps1_user Blue Black
-    ps1_cwd White Black
-    ps1_git Yellow Black
-    ps1_newline Default Default
-    ps1_return_code Red Black
-    ps1_prompt White Black
-
-    # final end point
-    if [ -n "$__last_color" ]; then
-        PS1+="$(section_end $__last_color 'Default')"
-    fi
-
-    # cleanup
-    PS1+="${PL_COLORS[Color_Off]}"
-    PS1+=" "
-    unset __last_color
-    unset __return_code
-}
-
-# define the basic color set
-declare -A PL_COLORS=(
-[Color_Off]='\[\e[0m\]'       # Text Reset
-# Foreground
-[Default]='\[\e[0;39m\]'      # Default
-[Black]='\[\e[0;30m\]'        # Black
-[Red]='\[\e[0;31m\]'          # Red
-[Green]='\[\e[0;32m\]'        # Green
-[Yellow]='\[\e[0;33m\]'       # Yellow
-[Blue]='\[\e[0;34m\]'         # Blue
-[Purple]='\[\e[0;35m\]'       # Purple
-[Cyan]='\[\e[0;36m\]'         # Cyan
-[White]='\[\e[0;37m\]'        # White
-# Background
-[On_Default]='\[\e[49m\]'     # Default
-[On_Black]='\[\e[40m\]'       # Black
-[On_Red]='\[\e[41m\]'         # Red
-[On_Green]='\[\e[42m\]'       # Green
-[On_Yellow]='\[\e[43m\]'      # Yellow
-[On_Blue]='\[\e[44m\]'        # Blue
-[On_Purple]='\[\e[45m\]'      # Purple
-[On_Cyan]='\[\e[46m\]'        # Cyan
-[On_White]='\[\e[47m\]'       # White
+# solarized colors
+declare -A TRUELINE_COLORS=(
+    # dark theme bg colors
+    [base03]='0;43;54'      # bg default
+    [base02]='7;54;66'      # bg higlights
+    # fg colors
+    [base01]='88;110;117'
+    [base00]='101;123;131'  # light theme primary fg
+    [base0]='131;148;150'   # dark theme primary fg
+    [base1]='147;161;161'
+    # light theme bg colors
+    [base2]='238;232;213'   # bg highlight
+    [base3]='253;246;227'   # bg default
+    # accent colors
+    [yellow]='181;137;0'
+    [orange]='203;75;22'
+    [red]='220;50;47'
+    [magenta]='211;54;130'
+    [violet]='108;113;196'
+    [blue]='38;139;210'
+    [cyan]='42;161;152'
+    [green]='133;153;0'
 )
 
-# default symbols are intended for 'out-ofthe-box' compatibility.
-# symbols from code page 437: character set of the original IBM PC
-declare -A PL_SYMBOLS=(
-[hard_separator]=""
-[soft_separator]=""
-[git_branch]=""
-[read_only]=""
-[return_code]="⚑"
+declare -A TRUELINE_SYMBOLS=(
+    [working_dir_home]='~'
+    [newline]='$'
+    [newline_root]='#'
 )
 
-PROMPT_COMMAND="diy_ps1; ${PROMPT_COMMAND}"
+# because the terminal use dark theme and we want to avoid to high contrasts
+# we use solarized fg colors for bg and light theme bg colors for fg
+
+declare -a TRUELINE_SEGMENTS=(
+    'my_newline,,,normal'
+    'user,base03,blue,bold'
+    'aws_profile,base03,orange,bold'
+    'venv,base03,violet,bold'
+    'conda_env,base03,violet,bold'
+    'git,base3,base01,normal'
+    'working_dir,base3,base1,normal'
+    'read_only,base03,orange,bold'
+    'my_newline,,,normal'
+    'bg_jobs,base03,yellow,normal'
+    'exit_status,base03,red,bold'
+    'cmd_duration,base3,base01,normal'
+    'prompt_char,base3,base1,bold'
+)
+
+TRUELINE_GIT_MODIFIED_COLOR='red'
+TRUELINE_GIT_BEHIND_AHEAD_COLOR='violet'
+TRUELINE_USER_ROOT_COLORS=('base03' 'red')
+TRUELINE_USER_ALWAYS_SHOW_HOSTNAME=true
+TRUELINE_WORKING_DIR_SPACE_BETWEEN_PATH_SEPARATOR=true
+TRUELINE_PROMPT_CHAR_ROOT_COLORS=('base03' 'orange')
+
+_trueline_my_newline_segment() {
+    local fg_color="$1"
+    local bg_color="$2"
+    local font_style="$3"
+    local segment="$(_trueline_separator default_bg)"
+    segment+="\n"
+    PS1+="$segment"
+    unset _last_color
+}
+
+_trueline_prompt_char_segment() {
+    local fg_color="$1"
+    local bg_color="$2"
+    local font_style="$3"
+    local is_root="$(_trueline_is_root)"
+    local newline_symbol="${TRUELINE_SYMBOLS[newline]}"
+    if [[ -n "$is_root" ]]; then
+        fg_color=${TRUELINE_PROMPT_CHAR_ROOT_COLORS[0]}
+        bg_color=${TRUELINE_PROMPT_CHAR_ROOT_COLORS[1]}
+        local newline_symbol="${TRUELINE_SYMBOLS[newline_root]}"
+    fi
+    local segment="$(_trueline_separator)"
+    segment+="$(_trueline_content "$fg_color" "$bg_color" "$font_style" " $newline_symbol ")"
+    PS1+="$segment"
+    _trueline_record_colors "$fg_color" "$bg_color" "$font_style" true
+}
+
+if [ -f /usr/bin/trueline ]; then
+    source /usr/bin/trueline
+fi
 

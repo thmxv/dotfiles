@@ -19,7 +19,7 @@ case "${unameOut}" in
 
         # cross toolchain
         if [ -f $HOME/Projects/sp3/current_toolchains/set_path.sh ]; then
-            . $HOME/Projects/sp3/current_toolchains/set_path.sh
+            source $HOME/Projects/sp3/current_toolchains/set_path.sh
         fi
 
         # launch ssh-agent if not running yet and set env to use it
@@ -38,7 +38,7 @@ esac
 
 # Powerline style promp
 if [ -f $HOME/.bash/prompt.sh ]; then
-    . $HOME/.bash/prompt.sh
+    source $HOME/.bash/prompt.sh
 fi
 
 
