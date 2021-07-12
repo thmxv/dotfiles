@@ -32,6 +32,9 @@ declare -A TRUELINE_SYMBOLS=(
 # we use solarized fg colors for bg and light theme bg colors for fg
 
 declare -a TRUELINE_SEGMENTS=(
+    'bg_jobs,base03,yellow,normal'
+    'cmd_duration,base3,base01,normal'
+    'exit_status,base03,red,bold'
     'my_newline,,,normal'
     'user,base03,blue,bold'
     'aws_profile,base03,orange,bold'
@@ -41,9 +44,6 @@ declare -a TRUELINE_SEGMENTS=(
     'working_dir,base3,base1,normal'
     'read_only,base03,orange,bold'
     'my_newline,,,normal'
-    'bg_jobs,base03,yellow,normal'
-    'exit_status,base03,red,bold'
-    'cmd_duration,base3,base01,normal'
     'prompt_char,base3,base1,bold'
 )
 
