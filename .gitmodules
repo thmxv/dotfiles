@@ -1,55 +1,45 @@
 [submodule "vim/pack/installed-packages/start/nerdtree"]
 	path = .vim/pack/installed-packages/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-	branch = master
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/pack/installed-packages/start/nerdtree-git-plugin"]
 	path = .vim/pack/installed-packages/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin
-	branch = master
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule "vim/pack/installed-packages/start/tagbar"]
 	path = .vim/pack/installed-packages/start/tagbar
-	url = https://github.com/majutsushi/tagbar
-	branch = master
+	url = https://github.com/majutsushi/tagbar.git
 [submodule "vim/pack/installed-packages/start/vim-airline"]
 	path = .vim/pack/installed-packages/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-	branch = master
+	url = https://github.com/vim-airline/vim-airline.git
 [submodule "vim/pack/installed-packages/start/vim-airline-themes"]
 	path = .vim/pack/installed-packages/start/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
-	branch = master
+	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "vim/pack/installed-packages/start/vim-solarized8"]
 	path = .vim/pack/installed-packages/opt/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
-	branch = master
 [submodule "vim/pack/installed-packages/start/vim-sensible"]
 	path = .vim/pack/installed-packages/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
-	branch = master
 [submodule "vim/pack/installed-packages/start/vim-sleuth"]
 	path = .vim/pack/installed-packages/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
-	branch = master
 [submodule "vim/pack/installed-packages/start/vim-surround"]
 	path = .vim/pack/installed-packages/start/vim-surround
-	url = https://github.com/tpope/vim-surround
-	branch = master
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/pack/installed-packages/start/vim-repeat"]
 	path = .vim/pack/installed-packages/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-	branch = master
 [submodule "vim/pack/installed-packages/start/rust.vim"]
 	path = .vim/pack/installed-packages/start/rust.vim
-	url = https://github.com/rust-lang/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
 [submodule "vim/pack/installed-packages/start/nerdcommenter"]
 	path = .vim/pack/installed-packages/start/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/pack/installed-packages/start/delimitmate"]
 	path = .vim/pack/installed-packages/start/delimitmate
-	url = https://github.com/raimondi/delimitmate
+	url = https://github.com/raimondi/delimitmate.git
 [submodule "vim/pack/installed-packages/start/vim-bufkill"]
 	path = .vim/pack/installed-packages/start/vim-bufkill
-	url = https://github.com/qpkorr/vim-bufkill
+	url = https://github.com/qpkorr/vim-bufkill.git
 [submodule ".vim/pack/installed-packages/start/nvim-lspconfig"]
 	path = .vim/pack/installed-packages/opt/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
@@ -64,13 +54,13 @@
 	url = https://github.com/kabouzeid/nvim-lspinstall.git
 [submodule ".vim/pack/installed-packages/start/vim-fugitive"]
 	path = .vim/pack/installed-packages/start/vim-fugitive
-	url = ../../tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/pack/installed-packages/start/vim-smoothie"]
 	path = .vim/pack/installed-packages/start/vim-smoothie
-	url = ../../psliwka/vim-smoothie
+	url = https://github.com/psliwka/vim-smoothie.git
 [submodule ".vim/pack/installed-packages/opt/nvim-compe"]
 	path = .vim/pack/installed-packages/opt/nvim-compe
-	url = ../../hrsh7th/nvim-compe
+	url = https://github.com/hrsh7th/nvim-compe.git
 [submodule ".vim/pack/installed-packages/opt/nvim-solarized-lua"]
 	path = .vim/pack/installed-packages/opt/nvim-solarized-lua
-	url = git@github.com:ishan9299/nvim-solarized-lua.git
+	url = https://github.com/ishan9299/nvim-solarized-lua.git
