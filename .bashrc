@@ -44,14 +44,15 @@ fi
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias vim='nvim'
-alias tmux='tmux -2'
 
 # alias for dotfiles git and autocomplete alias
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 complete -F _complete_alias config
 
-
 export VISUAL=nvim
 export EDITOR=nvim
 
+export DIFFPROG='nvim -d'
+alias pacdiff='sudo -H DIFFPROG="nvim -d" pacdiff'
+
+alias arch-maintenance='bash $HOME/.bash/arch-maintenance.sh'
