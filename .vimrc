@@ -34,7 +34,6 @@ source ~/.vim/nerdcommenter.vim
 if(!has("nvim"))
 
   " Vim only
-  packadd vim-solarized8
   " TODO FZF
 
 else

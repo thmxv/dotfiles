@@ -1,6 +1,7 @@
 set termguicolors   " Use true colors
 set background=dark
 if(!has("nvim"))
+  packadd vim-solarized8
   colorscheme solarized8
 else
   colorscheme solarized
