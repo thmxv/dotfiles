@@ -1,3 +1,6 @@
+-- Avoid showing message extra message when using completion
+vim.o.shortmess = vim.o.shortmess .. "c"
+
 vim.o.completeopt = "menuone,noinsert,noselect"
 
 require'compe'.setup {
