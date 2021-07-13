@@ -64,3 +64,6 @@
 [submodule ".vim/pack/installed-packages/opt/nvim-solarized-lua"]
 	path = .vim/pack/installed-packages/opt/nvim-solarized-lua
 	url = https://github.com/ishan9299/nvim-solarized-lua.git
+[submodule ".bash/trueline"]
+	path = .bash/trueline
+	url = https://github.com/petobens/trueline.git

@@ -33,18 +33,18 @@ declare -A TRUELINE_SYMBOLS=(
 
 declare -a TRUELINE_SEGMENTS=(
     'bg_jobs,base03,yellow,normal'
-    'cmd_duration,base3,base01,normal'
+    'cmd_duration,base03,base01,normal'
     'exit_status,base03,red,bold'
     'my_newline,,,normal'
-    'user,base03,blue,bold'
+    'user,black,blue,bold'
     'aws_profile,base03,orange,bold'
     'venv,base03,violet,bold'
     'conda_env,base03,violet,bold'
-    'git,base3,base01,normal'
-    'working_dir,base3,base1,normal'
-    'read_only,base03,orange,bold'
+    'git,base03,base1,normal'
+    'working_dir,base03,base01,normal'
+    'read_only,base03,orange,normal'
     'my_newline,,,normal'
-    'prompt_char,base3,base1,bold'
+    'prompt_char,base03,base01,bold'
 )
 
 TRUELINE_GIT_MODIFIED_COLOR='red'
@@ -81,7 +81,7 @@ _trueline_prompt_char_segment() {
     _trueline_record_colors "$fg_color" "$bg_color" "$font_style" true
 }
 
-if [ -f /usr/bin/trueline ]; then
-    source /usr/bin/trueline
+if [ -f $HOME/.bash/trueline/trueline.sh ]; then
+    source $HOME/.bash/trueline/trueline.sh
 fi
 
