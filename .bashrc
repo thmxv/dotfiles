@@ -7,8 +7,9 @@
 [[ $- != *i* ]] && return
 
 # Windows colors
-# TODO: Fix
-#eval `dircolors ~/.dir_colors`
+if [[ "$OSTYPE" == "msys" ]] && [ -f $HOME/.bash/dir_colors ]; then
+    eval `dircolors $HOME/.bash/dir_colors`
+fi
 
 # VTE stuff :/
 if [ -f /etc/profile.d/vte.sh ]; then
@@ -21,15 +22,17 @@ if [ -f $HOME/Projects/sp3/current_toolchains/set_path.sh ]; then
 fi
 
 # launch ssh-agent if not running yet and set env to use it
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+if [[ "$OSTYPE" != "msys" ]]; then
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    fi
+    if [[ ! "$SSH_AUTH_SOCK" ]]; then
+        source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+    fi
 fi
 
 # Powerline style promp
-if [ -f $HOME/.bash/prompt.sh ]; then
+if [[ $OSTYPE != "msys" ]] && [ -f $HOME/.bash/prompt.sh ]; then
     source $HOME/.bash/prompt.sh
 fi
 
