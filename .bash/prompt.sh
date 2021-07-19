@@ -26,16 +26,16 @@ declare -A TRUELINE_SYMBOLS=(
     [working_dir_home]='~'
     [newline]='$'
     [newline_root]='#'
+    [exit_status]=''
 )
 
 # because the terminal use dark theme and we want to avoid to high contrasts
 # we use solarized fg colors for bg and light theme bg colors for fg
 
 declare -a TRUELINE_SEGMENTS=(
-    'bg_jobs,base03,yellow,normal'
-    'cmd_duration,base03,base01,normal'
-    'exit_status,base03,red,bold'
-    'my_newline,,,normal'
+    # 'cmd_duration,base03,base01,normal'
+    'exit_status,red,base02,bold'
+    'my_newline,,,'
     'user,black,blue,bold'
     'aws_profile,base03,orange,bold'
     'venv,base03,violet,bold'
@@ -43,14 +43,15 @@ declare -a TRUELINE_SEGMENTS=(
     'git,base03,base1,normal'
     'working_dir,base03,base01,normal'
     'read_only,base03,orange,normal'
-    'my_newline,,,normal'
+    'my_newline,,,'
+    'bg_jobs,base03,yellow,normal'
     'prompt_char,base03,base01,bold'
 )
 
 TRUELINE_GIT_MODIFIED_COLOR='red'
 TRUELINE_GIT_BEHIND_AHEAD_COLOR='violet'
 TRUELINE_USER_ROOT_COLORS=('base03' 'red')
-TRUELINE_USER_ALWAYS_SHOW_HOSTNAME=true
+# TRUELINE_USER_ALWAYS_SHOW_HOSTNAME=true
 TRUELINE_WORKING_DIR_SPACE_BETWEEN_PATH_SEPARATOR=true
 TRUELINE_PROMPT_CHAR_ROOT_COLORS=('base03' 'orange')
 
@@ -85,3 +86,5 @@ if [ -f $HOME/.bash/trueline/trueline.sh ]; then
     source $HOME/.bash/trueline/trueline.sh
 fi
 
+# Fix trueline ovberwriting vte
+PROMPT_COMMAND="${PROMPT_COMMAND}; ${_PROMPT_COMMAND_OLD}"
