@@ -52,3 +52,4 @@ alias pacdiff='sudo -H DIFFPROG="nvim -d" pacdiff'
 
 alias arch-maintenance='bash $HOME/.bash/arch-maintenance.sh'
 
+echo -e "(o)> \n//\\ \nV_/_"
