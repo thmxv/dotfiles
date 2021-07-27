@@ -36,7 +36,7 @@ declare -a TRUELINE_SEGMENTS=(
     # 'cmd_duration,base03,base01,normal'
     'exit_status,red,base02,bold'
     'my_newline,,,'
-    'user,black,blue,bold'
+    'user,base03,blue,bold'
     'aws_profile,base03,orange,bold'
     'venv,base03,violet,bold'
     'conda_env,base03,violet,bold'
