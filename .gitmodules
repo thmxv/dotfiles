@@ -67,3 +67,6 @@
 [submodule ".bash/trueline"]
 	path = .bash/trueline
 	url = https://github.com/petobens/trueline.git
+[submodule ".vim/pack/installed-packages/opt/telescope-fzy-native.nvim"]
+	path = .vim/pack/installed-packages/opt/telescope-fzy-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim.git
