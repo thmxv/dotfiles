@@ -13,7 +13,7 @@ upgrade_system () {
 }
 
 upgrade_system_config () {
-    pacdiff
+    sudo -H DIFFPROG="nvim -d" pacdiff
 }
 
 clean_package_cache () {
@@ -24,9 +24,12 @@ remove_orphan_packages () {
     pacman -Qtdq | sudo pacman -Rns -
 }
 
+find_lost_files() {
+    sudo lostfiles | ${PAGER:=less}
+}
 
 find_broken_links () {
-    sudo find / -xdev -xtype l -print
+    sudo find / -xdev -xtype l -print | ${PAGER:=less}
     # find /home -xdev -xtype l -print
 }
 
