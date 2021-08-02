@@ -1,9 +1,7 @@
-# TODO: install tagrgets that create links in $HOME
 
-update: .FORCE
-	config pull --rebase
-	config submodule update --init --recursive
-	config submodule foreach git checkout master
-	config submodule foreach git pull --rebase origin master
+GIT =git --git-dir=$(HOME)/.dotfiles/ --work-tree=$(HOME) 
+
+config-update-submodules: .FORCE
+	$(GIT) submodule update --remote
 
 .FORCE:
