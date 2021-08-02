@@ -6,7 +6,6 @@ set tabstop=4
 set number
 set nowrap
 set showmatch       " Show matching parenthesis
-set noshowmode      " Mode already in statusbar
 set mouse=a
 set listchars=tab:→\ ,trail:·,precedes:«,extends:»,eol:⏎
 "set list            " Display above hidden control char
@@ -32,12 +31,9 @@ source ~/.vim/nerdtree.vim
 source ~/.vim/nerdcommenter.vim
 
 if(!has("nvim"))
-
   " Vim only
-  " TODO FZF
 
 else
-
   " Neovim only
   packadd nvim-lspconfig
   packadd nvim-lspinstall
@@ -51,4 +47,3 @@ else
   luafile ~/.vim/compe.lua
 
 endif
-

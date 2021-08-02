@@ -1,5 +1,6 @@
 set termguicolors   " Use true colors
-set background=dark
+set background=dark " BEFORE colorscheme
+
 if(!has("nvim"))
   packadd vim-solarized8
   colorscheme solarized8
@@ -11,5 +12,3 @@ endif
 " Statusbar theme
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
-
