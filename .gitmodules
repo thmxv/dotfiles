@@ -55,3 +55,6 @@
 [submodule ".vim/pack/installed-packages/opt/lspsaga.nvim"]
 	path = .vim/pack/installed-packages/opt/lspsaga.nvim
 	url = https://github.com/glepnir/lspsaga.nvim.git
+[submodule ".vim/pack/installed-packages/opt/lualine.nvim"]
+	path = .vim/pack/installed-packages/opt/lualine.nvim
+	url = https://github.com/hoob3rt/lualine.nvim.git

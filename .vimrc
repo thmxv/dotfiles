@@ -41,11 +41,13 @@ else
   packadd telescope.nvim
   packadd telescope-fzy-native.nvim
   packadd nvim-compe
+  packadd lualine.nvim
 
   " Source other config files
   luafile ~/.vim/treesitter.lua
   luafile ~/.vim/lsp.lua
   luafile ~/.vim/compe.lua
   luafile ~/.vim/telescope.lua
+  luafile ~/.vim/lualine.lua
 
 endif
