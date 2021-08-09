@@ -34,9 +34,10 @@ if(!has("nvim"))
 
 else
   " Neovim only
+  packadd nvim-treesitter
   packadd nvim-lspconfig
   packadd nvim-lspinstall
-  packadd nvim-treesitter
+  packadd lspsaga.nvim
   packadd telescope.nvim
   packadd telescope-fzy-native.nvim
   packadd nvim-compe

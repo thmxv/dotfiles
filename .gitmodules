@@ -52,3 +52,6 @@
 [submodule ".vim/pack/installed-packages/opt/telescope-fzy-native.nvim"]
 	path = .vim/pack/installed-packages/opt/telescope-fzy-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim.git
+[submodule ".vim/pack/installed-packages/opt/lspsaga.nvim"]
+	path = .vim/pack/installed-packages/opt/lspsaga.nvim
+	url = https://github.com/glepnir/lspsaga.nvim.git
