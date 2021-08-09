@@ -42,6 +42,7 @@ else
   packadd telescope-fzy-native.nvim
   packadd nvim-compe
   packadd lualine.nvim
+  packadd black-nvim
 
   " Source other config files
   luafile ~/.vim/treesitter.lua
