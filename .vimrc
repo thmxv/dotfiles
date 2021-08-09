@@ -19,6 +19,7 @@ set visualbell      " No beep
 set cursorline
 set splitright
 set splitbelow
+set relativenumber
 
 
 " Source other config files
