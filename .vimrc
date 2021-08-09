@@ -26,9 +26,7 @@ set relativenumber
 source ~/.vim/key-mappings.vim
 source ~/.vim/color-theme.vim
 source ~/.vim/terminal.vim
-source ~/.vim/airline.vim
 source ~/.vim/clang-format.vim
-source ~/.vim/nerdtree.vim
 source ~/.vim/nerdcommenter.vim
 
 if(!has("nvim"))

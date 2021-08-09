@@ -6,13 +6,6 @@ nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 " Clear search higlight on ESC
 nnoremap <esc> :noh<return><esc>
 
-" Tagbar
-nmap <F8> :<C-u>TagbarOpenAutoClose<CR>
-
-" NERDTree
-map <C-n> :<C-u>NERDTreeToggle<CR>
-
-
 " Neo-vim only
 if(has("nvim"))
 
