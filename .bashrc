@@ -45,6 +45,9 @@ alias grep='grep --color=auto'
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 complete -F _complete_alias config
 
+# make xargs expands alias
+alias xargs='xargs '
+
 export VISUAL=nvim
 export EDITOR=nvim
 export DIFFPROG='nvim -d'
