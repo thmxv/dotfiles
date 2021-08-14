@@ -4,6 +4,7 @@ set encoding=utf-8  " Terminal encoding
 set colorcolumn=80  " Right margin at 80 char
 set tabstop=4
 set number
+set relativenumber
 set nowrap
 set showmatch       " Show matching parenthesis
 set mouse=a
@@ -19,8 +20,6 @@ set visualbell      " No beep
 set cursorline
 set splitright
 set splitbelow
-set relativenumber
-
 
 " Source other config files
 source ~/.vim/key-mappings.vim
@@ -50,5 +49,7 @@ else
   luafile ~/.vim/compe.lua
   luafile ~/.vim/telescope.lua
   luafile ~/.vim/lualine.lua
+
+  let g:black#settings = {'line_length': 79}
 
 endif
