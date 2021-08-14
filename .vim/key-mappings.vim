@@ -1,6 +1,6 @@
 
 " Quick open/reload settings
-nnoremap <leader>ev :e ~/.vimrc<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 
 " Clear search higlight on ESC
