@@ -19,25 +19,25 @@ end
 require("paq")({
      -- Let Paq manage itself
     "savq/paq-nvim";
-
+    -- My installed plugins
     "neovim/nvim-lspconfig";
     "kabouzeid/nvim-lspinstall";
     "glepnir/lspsaga.nvim";
     "hrsh7th/nvim-compe";
-    {"nvim-treesitter/nvim-treesitter", run=':TSUpdate'};
+    {"nvim-treesitter/nvim-treesitter", run = function() cmd('TSUpdate') end};
     "nvim-telescope/telescope.nvim";
     "nvim-telescope/telescope-fzy-native.nvim";
     "tpope/vim-sensible";
-    "tpope/vim-sleuth";
-    "tpope/vim-surround";
+    {"tpope/vim-sleuth", run = function() cmd('helptags sleuth/doc') end};
+    {"tpope/vim-surround", run = function() cmd('helptags surround/doc') end};
     "tpope/vim-repeat";
-    "tpope/vim-fugitive";
-    "scrooloose/nerdcommenter";
+    {"tpope/vim-fugitive", run = function() cmd('helptags fugitive/doc') end};
+    "preservim/nerdcommenter";
     "raimondi/delimitmate";
     "qpkorr/vim-bufkill";
     "ishan9299/nvim-solarized-lua";
     "hoob3rt/lualine.nvim";
-    {"a-vrma/black-nvim", run=' '};
+    {"a-vrma/black-nvim", run = function() cmd('UpdateRemotePlugins') end};
 })
 
 opt.colorcolumn = '80'
@@ -66,6 +66,8 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Source other config files
+-- TODO: switch those to lua and move from $HOME/.vim/ directory
+-- to $HOME/.config/nvim/lua/thmxvr
 cmd("source ~/.vim/key-mappings.vim")
 cmd("source ~/.vim/color-theme.vim")
 cmd("source ~/.vim/terminal.vim")
@@ -79,5 +81,7 @@ require("thmxvr.compe")
 require("thmxvr.telescope")
 require("thmxvr.lualine")
 
-g['black#settings'] = {line_length= 79}
+g['black#settings'] = {
+  line_length = 79
+}
 
