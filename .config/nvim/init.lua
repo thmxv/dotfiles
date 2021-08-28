@@ -20,24 +20,30 @@ require("paq")({
      -- Let Paq manage itself
     "savq/paq-nvim";
     -- My installed plugins
+    "nvim-lua/plenary.nvim";
     "neovim/nvim-lspconfig";
     "kabouzeid/nvim-lspinstall";
+    "ray-x/lsp_signature.nvim";
     "glepnir/lspsaga.nvim";
-    "hrsh7th/nvim-compe";
+    "hrsh7th/nvim-cmp";
+    "hrsh7th/cmp-buffer";
+    "hrsh7th/cmp-nvim-lua";
+    "hrsh7th/cmp-nvim-lsp";
     {"nvim-treesitter/nvim-treesitter", run = function() cmd('TSUpdate') end};
     "nvim-telescope/telescope.nvim";
     "nvim-telescope/telescope-fzy-native.nvim";
     "tpope/vim-sensible";
-    {"tpope/vim-sleuth", run = function() cmd('helptags sleuth/doc') end};
-    {"tpope/vim-surround", run = function() cmd('helptags surround/doc') end};
+    "tpope/vim-sleuth";
+    "tpope/vim-surround";
     "tpope/vim-repeat";
-    {"tpope/vim-fugitive", run = function() cmd('helptags fugitive/doc') end};
+    "tpope/vim-fugitive";
+    "lewis6991/gitsigns.nvim";
     "preservim/nerdcommenter";
     "raimondi/delimitmate";
-    "qpkorr/vim-bufkill";
     "ishan9299/nvim-solarized-lua";
     "hoob3rt/lualine.nvim";
     {"a-vrma/black-nvim", run = function() cmd('UpdateRemotePlugins') end};
+    "akinsho/toggleterm.nvim";
 })
 
 opt.colorcolumn = '80'
@@ -77,7 +83,7 @@ cmd("source ~/.vim/nerdcommenter.vim")
 -- Source other config files
 require("thmxvr.treesitter")
 require("thmxvr.lsp")
-require("thmxvr.compe")
+require("thmxvr.completion")
 require("thmxvr.telescope")
 require("thmxvr.lualine")
 
@@ -85,3 +91,9 @@ g['black#settings'] = {
   line_length = 79
 }
 
+require('gitsigns').setup()
+
+-- TODO: Move to teminal file with key-mappings
+require("toggleterm").setup{
+  open_mapping = [[<c-\>]],
+}

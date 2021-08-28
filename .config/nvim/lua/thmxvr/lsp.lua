@@ -47,6 +47,9 @@ local on_attach = function(client, bufnr)
     ]], false)
   end
 
+  -- lsp-signature
+  require "lsp_signature".on_attach()
+
 end
 
 -- Configure lua language server for neovim development
@@ -74,7 +77,7 @@ local lua_settings = {
 -- config that activates keymaps and enables snippet support
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
   return {
     -- enable snippet support
     capabilities = capabilities,
@@ -92,6 +95,7 @@ local function setup_servers()
   -- ... and add manually installed servers
   table.insert(servers, "clangd")
   table.insert(servers, "pyright")
+  table.insert(servers, "jedi_language_server")
 
   for _, server in pairs(servers) do
     local config = make_config()
@@ -99,12 +103,6 @@ local function setup_servers()
     -- language specific config
     if server == "lua" then
       config.settings = lua_settings
-    end
-    if server == "sourcekit" then
-      config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
-    end
-    if server == "clangd" then
-      config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
     end
 
     require'lspconfig'[server].setup(config)
@@ -127,4 +125,4 @@ for type, icon in pairs(signs) do
 end
 
 -- LSP Saga
-require('lspsaga').init_lsp_saga()
+-- require('lspsaga').init_lsp_saga()
