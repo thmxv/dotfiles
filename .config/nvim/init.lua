@@ -71,6 +71,9 @@ opt.cursorline = true
 opt.splitright = true
 opt.splitbelow = true
 
+g.netrw_liststyle = 3
+g.netrw_banner = 0
+
 -- Source other config files
 -- TODO: switch those to lua and move from $HOME/.vim/ directory
 -- to $HOME/.config/nvim/lua/thmxvr
