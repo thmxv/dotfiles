@@ -83,6 +83,13 @@ local function make_config()
     capabilities = capabilities,
     -- map buffer local keybindings when the language server attaches
     on_attach = on_attach,
+    -- diable virtual text for diagnostics
+    handlers = {
+      ["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics,
+        {virtual_text = false}
+      )
+    },
   }
 end
 
