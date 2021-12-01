@@ -69,6 +69,7 @@ local lua_settings = {
       library = {
         [vim.fn.expand('$VIMRUNTIME/lua')] = true,
         [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        [vim.fn.expand('$HOME/.config/nvim/lua')] = true,
       },
     },
   }
@@ -76,8 +77,8 @@ local lua_settings = {
 
 -- config that activates keymaps and enables snippet support
 local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   return {
     -- enable snippet support
     capabilities = capabilities,

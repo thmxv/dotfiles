@@ -29,6 +29,8 @@ require("paq")({
     "hrsh7th/cmp-buffer";
     "hrsh7th/cmp-nvim-lua";
     "hrsh7th/cmp-nvim-lsp";
+    'L3MON4D3/LuaSnip';
+    'saadparwaiz1/cmp_luasnip';
     {"nvim-treesitter/nvim-treesitter", run = function() cmd('TSUpdate') end};
     "nvim-telescope/telescope.nvim";
     "nvim-telescope/telescope-fzy-native.nvim";
@@ -86,8 +88,8 @@ cmd("source ~/.vim/nerdcommenter.vim")
 
 -- Source other config files
 require("thmxvr.treesitter")
-require("thmxvr.lsp")
 require("thmxvr.completion")
+require("thmxvr.lsp")
 require("thmxvr.telescope")
 require("thmxvr.lualine")
 
