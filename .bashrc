@@ -38,6 +38,9 @@ if [[ "$OSTYPE" != "msys" ]] && [ -f $HOME/.bash/prompt.sh ]; then
     source $HOME/.bash/prompt.sh
 fi
 
+# Python pip executable script path
+PATH=/home/xavier/.local/bin:$PATH
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
