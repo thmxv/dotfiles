@@ -22,7 +22,7 @@ require("paq")({
     -- My installed plugins
     "nvim-lua/plenary.nvim";
     "neovim/nvim-lspconfig";
-    "kabouzeid/nvim-lspinstall";
+    "williamboman/nvim-lsp-installer";
     "ray-x/lsp_signature.nvim";
     "glepnir/lspsaga.nvim";
     "hrsh7th/nvim-cmp";
