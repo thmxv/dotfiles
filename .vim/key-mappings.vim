@@ -7,7 +7,8 @@ nnoremap <leader>sv :source $MYVIMRC <bar> :doautocmd BufRead<CR>
 nnoremap <esc> :noh<return><esc>
 
 " Buffer delete without closing split
-nnoremap <leader>bd :b#\|bd#<CR>
+" nnoremap <leader>bd :b#\|bd#<CR>
+nnoremap <leader>bd :Bdelete<CR>
 
 " Neo-vim only
 if(has("nvim"))

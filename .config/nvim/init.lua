@@ -44,6 +44,7 @@ require("paq")({
     "hoob3rt/lualine.nvim";
     {"a-vrma/black-nvim", run = function() cmd('UpdateRemotePlugins') end};
     "akinsho/toggleterm.nvim";
+    "famiu/bufdelete.nvim";
 })
 
 opt.colorcolumn = '80'
