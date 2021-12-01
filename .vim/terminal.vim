@@ -24,22 +24,22 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <leader>t :split \| ter<CR>a
-nnoremap <leader>vt :vsplit \| ter<CR>a
+" nnoremap <leader>t :split \| ter<CR>a
+" nnoremap <leader>vt :vsplit \| ter<CR>a
 
 " make term load bashrc
 " let &shell='/usr/bin/bash --login'
 
 " remove line number
-if(exists("##TermOpen"))
-  autocmd TermOpen * setlocal nonumber norelativenumber
-endif
-if(exists("##TermEnter"))
-  autocmd TermEnter * setlocal nonumber norelativenumber
-endif
-if(exists("##TerminalOpen"))
-  autocmd TerminalOpen * setlocal nonumber norelativenumber
-endif
-if(exists("##TerminalEnter"))
-  autocmd TerminalEnter * setlocal nonumber norelativenumber
-endif
+" if(exists("##TermOpen"))
+"   autocmd TermOpen * setlocal nonumber norelativenumber
+" endif
+" if(exists("##TermEnter"))
+"   autocmd TermEnter * setlocal nonumber norelativenumber
+" endif
+" if(exists("##TerminalOpen"))
+"   autocmd TerminalOpen * setlocal nonumber norelativenumber
+" endif
+" if(exists("##TerminalEnter"))
+"   autocmd TerminalEnter * setlocal nonumber norelativenumber
+" endif
