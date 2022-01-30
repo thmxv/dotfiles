@@ -29,6 +29,8 @@ require("paq")({
     "hrsh7th/cmp-buffer";
     "hrsh7th/cmp-nvim-lua";
     "hrsh7th/cmp-nvim-lsp";
+    "hrsh7th/cmp-path";
+    "hrsh7th/cmp-cmdline";
     'L3MON4D3/LuaSnip';
     'saadparwaiz1/cmp_luasnip';
     {"nvim-treesitter/nvim-treesitter", run = function() cmd('TSUpdate') end};
@@ -47,6 +49,7 @@ require("paq")({
     {"a-vrma/black-nvim", run = function() cmd('UpdateRemotePlugins') end};
     "akinsho/toggleterm.nvim";
     "famiu/bufdelete.nvim";
+    "chipsenkbeil/distant.nvim";
 })
 
 opt.colorcolumn = '80'
@@ -77,6 +80,9 @@ opt.splitbelow = true
 g.netrw_liststyle = 3
 g.netrw_banner = 0
 
+-- g.delinitMate_expand_cr = 1
+cmd("filetype indent plugin on")
+
 -- Source other config files
 -- TODO: switch those to lua and move from $HOME/.vim/ directory
 -- to $HOME/.config/nvim/lua/thmxvr
@@ -103,3 +109,15 @@ require('gitsigns').setup()
 require("toggleterm").setup{
   open_mapping = [[<c-\>]],
 }
+
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.mxx set ft=cpp')
+
+require('distant').setup {
+  -- Applies Chip's personal settings to every machine you connect to
+  --
+  -- 1. Ensures that distant servers terminate with no connections
+  -- 2. Provides navigation bindings for remote directories
+  -- 3. Provides keybinding to jump into a remote file's parent directory
+  ['*'] = require('distant.settings').chip_default()
+}
+
