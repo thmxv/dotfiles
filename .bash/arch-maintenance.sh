@@ -9,7 +9,7 @@ check_errors_journal () {
 }
 
 upgrade_system () {
-    sudo pacman -Sy --needed archlinux-keyring && yay -Su
+    sudo pacman -Sy --needed archlinux-keyring && paru
 }
 
 upgrade_system_config () {

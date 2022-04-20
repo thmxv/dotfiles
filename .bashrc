@@ -39,7 +39,11 @@ if [[ "$OSTYPE" != "msys" ]] && [ -f $HOME/.bash/prompt.sh ]; then
 fi
 
 # Python pip executable script path
-PATH=/home/xavier/.local/bin:$PATH
+PATH="$PATH:$HOME/.local/bin"
+# rustup binaries
+PATH="$PATH:$HOME/.cargo/bin"
+# go binaries
+PATH="$PATH:$HOME/go/bin"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
