@@ -47,6 +47,7 @@ require("paq")({
     "preservim/nerdcommenter";
     "raimondi/delimitmate";
     "ishan9299/nvim-solarized-lua";
+    --"shaunsingh/solarized.nvim";
     "hoob3rt/lualine.nvim";
     "akinsho/toggleterm.nvim";
     "famiu/bufdelete.nvim";
@@ -96,7 +97,7 @@ local opts = { remap=false , silent=true }
 
 -- Quick open/reload settings
 vim.keymap.set('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>', opts)
-vim.keymap.set('n', '<leader>sv', 
+vim.keymap.set('n', '<leader>sv',
   '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>', opts
 )
 
@@ -160,9 +161,11 @@ require("thmxvr.lualine")
 
 require('gitsigns').setup()
 
-require("toggleterm").setup{
+require("toggleterm").setup({
   open_mapping = [[<c-\>]],
-}
+  shade_terminals = true,
+  --shading_factor = 1,
+})
 
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.mxx set ft=cpp')
 

@@ -9,7 +9,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   --Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- Mappings.
@@ -40,56 +40,55 @@ require("mason-lspconfig").setup({
 })
 
 -- default config for all servers
-local config = {
-  -- map buffer local keybindings when the language server attaches
-  on_attach = on_attach,
-  -- enable snippet support
-  capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  ),
-  -- disable virtual text for diagnostics
-  handlers = {
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics,
-      {virtual_text = false}
-    )
-  },
-}
+local function make_config()
+  return {
+    -- map buffer local keybindings when the language server attaches
+    on_attach = on_attach,
+    -- enable snippet support
+    capabilities = require('cmp_nvim_lsp').update_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    ),
+    -- disable virtual text for diagnostics
+    handlers = {
+      ["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics,
+        {virtual_text = false}
+      )
+    },
+  }
+end
 
 local lspconfig = require("lspconfig")
 require("mason-lspconfig").setup_handlers({
   -- Default handler
   function(server_name)
-    lspconfig[server_name].setup(config)
+    lspconfig[server_name].setup(make_config())
   end,
 
   ["sumneko_lua"] = function()
-    lspconfig.sumneko_lua.setup({
-      on_attach = config.on_attach,
-      capabilities = config.capabilities,
-      handlers = config.handlers,
-      settings = {
-        Lua = {
-          runtime = {
-            -- LuaJIT in the case of Neovim
-            version = 'LuaJIT',
-            path = vim.split(package.path, ';'),
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = {
-              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-              [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-              [vim.fn.stdpath('config') .. '/lua'] = true,
-            },
+    local config = make_config()
+    config.settings = {
+      Lua = {
+        runtime = {
+          -- LuaJIT in the case of Neovim
+          version = 'LuaJIT',
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+            [vim.fn.stdpath('config') .. '/lua'] = true,
           },
         },
       },
-    })
+    }
+    lspconfig.sumneko_lua.setup(config)
   end
 })
 
