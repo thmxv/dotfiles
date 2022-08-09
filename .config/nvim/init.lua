@@ -24,9 +24,11 @@ require("paq")({
     "neovim/nvim-lspconfig";
     "williamboman/mason-lspconfig.nvim";
     "mfussenegger/nvim-dap";
+    "rcarriga/nvim-dap-ui";
+    "theHamsta/nvim-dap-virtual-text";
     "jose-elias-alvarez/null-ls.nvim";
     "williamboman/mason.nvim";
-    "ray-x/lsp_signature.nvim";
+    "hrsh7th/cmp-nvim-lsp-signature-help";
     "hrsh7th/cmp-buffer";
     "hrsh7th/cmp-nvim-lua";
     "hrsh7th/cmp-nvim-lsp";
@@ -42,15 +44,18 @@ require("paq")({
     "tpope/vim-sleuth";
     "tpope/vim-surround";
     "tpope/vim-repeat";
-    "tpope/vim-fugitive";
+    "TimUntersberger/neogit";
     "lewis6991/gitsigns.nvim";
-    "preservim/nerdcommenter";
+    "terrortylor/nvim-comment";
     "raimondi/delimitmate";
-    "ishan9299/nvim-solarized-lua";
-    --"shaunsingh/solarized.nvim";
+    -- "ishan9299/nvim-solarized-lua";
+    "EdenEast/nightfox.nvim";
     "hoob3rt/lualine.nvim";
     "akinsho/toggleterm.nvim";
     "famiu/bufdelete.nvim";
+    "lukas-reineke/indent-blankline.nvim";
+    "matze/vim-move";
+    "RRethy/vim-illuminate";
     -- "glepnir/lspsaga.nvim";
     -- "chipsenkbeil/distant.nvim";
     -- "phaazon/hop.nvim";
@@ -86,12 +91,13 @@ opt.splitbelow = true
 
 g.netrw_liststyle = 3
 g.netrw_banner = 0
--- g.delimitMate_expand_cr = 1
 
 cmd("filetype indent plugin on")
 cmd("set termguicolors")   -- Use true colors
 cmd("set background=dark") -- BEFORE colorscheme
-cmd("colorscheme solarized")
+cmd("colorscheme nightfox")
+vim.o.showmode = false
+require('lualine').setup()
 
 local opts = { remap=false , silent=true }
 
@@ -137,27 +143,22 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
-
--- " Add spaces after comment delimiters by default
--- let g:NERDSpaceDelims = 1
--- " Use compact syntax for prettified multi-line comments
--- let g:NERDCompactSexyComs = 1
--- " Align line-wise comment delimiters flush left instead of following code indentation
--- let g:NERDDefaultAlign = 'left'
--- " Allow commenting and inverting empty lines (useful when commenting a region)
--- let g:NERDCommentEmptyLines = 1
--- " Enable trimming of trailing whitespace when uncommenting
--- let g:NERDTrimTrailingWhitespace = 1
--- " Enable NERDCommenterToggle to check all selected lines is commented or not
--- let g:NERDToggleCheckAllLines = 1
-
-
 -- Source other config files
 require("thmxvr.treesitter")
 require("thmxvr.completion")
 require("thmxvr.lsp")
 require("thmxvr.telescope")
-require("thmxvr.lualine")
+
+vim.cmd([[
+" press <Tab> to expand or jump in a snippet. These can also be mapped separately
+" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+" -1 for jumping backwards.
+inoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+]]
+)
 
 require('gitsigns').setup()
 
@@ -167,14 +168,8 @@ require("toggleterm").setup({
   --shading_factor = 1,
 })
 
-vim.api.nvim_command('autocmd BufNewFile,BufRead *.mxx set ft=cpp')
+require('nvim_comment').setup()
+require("indent_blankline").setup()
 
---require('distant').setup {
-  ---- Applies Chip's personal settings to every machine you connect to
-  ----
-  ---- 1. Ensures that distant servers terminate with no connections
-  ---- 2. Provides navigation bindings for remote directories
-  ---- 3. Provides keybinding to jump into a remote file's parent directory
-  --['*'] = require('distant.settings').chip_default()
---}
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.mxx set ft=cpp')
 
