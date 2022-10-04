@@ -6,7 +6,7 @@ vim.keymap.set('n', '<leader>dc', require('dap').continue, opts)
 vim.keymap.set('n', '<leader>dn', require('dap').step_over, opts)
 vim.keymap.set('n', '<leader>ds', require('dap').step_into, opts)
 vim.keymap.set('n', '<leader>dt', require('dap').terminate, opts)
-vim.keymap.set('n', '<leader>dr', require('dap').repl.open, opts)
+vim.keymap.set('n', '<leader>dr', require('dap').repl.toggle, opts)
 vim.keymap.set('n', '<leader>dd', require('dapui').toggle, opts)
 
 local dap = require('dap')
@@ -18,18 +18,30 @@ dap.adapters.codelldb = {
     args = {"--port", "${port}"},
   }
 }
+
+local last_cmd = vim.fn.getcwd() .. '/'
+local last_args = {}
 dap.configurations.cpp = {
   {
     name = "Launch file",
     type = "codelldb",
     request = "launch",
     program = function()
-      return vim.fn.input(
+      last_cmd = vim.fn.input(
         'Path to executable: ',
-        vim.fn.getcwd() .. '/',
+        last_cmd,
         'file'
       )
+      return last_cmd
     end,
+    -- args = function()
+    --   local args = vim.fn.input(
+    --     'Arguments: ',
+    --     table.concat(last_args, " ")
+    --   )
+    --   last_args = vim.split(args, " ")
+    --   return last_args
+    -- end,
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
   },

@@ -18,50 +18,55 @@ end
 -- paq-nvim packages
 require("paq")({
      -- Let Paq manage itself
-    "savq/paq-nvim";
+    "savq/paq-nvim",
     -- My installed plugins
-    "nvim-lua/plenary.nvim";
-    "neovim/nvim-lspconfig";
-    "williamboman/mason-lspconfig.nvim";
-    "mfussenegger/nvim-dap";
-    "rcarriga/nvim-dap-ui";
-    "theHamsta/nvim-dap-virtual-text";
-    "jose-elias-alvarez/null-ls.nvim";
-    "williamboman/mason.nvim";
-    "hrsh7th/cmp-nvim-lsp-signature-help";
-    "hrsh7th/cmp-buffer";
-    "hrsh7th/cmp-nvim-lua";
-    "hrsh7th/cmp-nvim-lsp";
-    "hrsh7th/cmp-path";
-    "hrsh7th/cmp-cmdline";
-    "hrsh7th/nvim-cmp";
-    'L3MON4D3/LuaSnip';
-    'saadparwaiz1/cmp_luasnip';
-    {"nvim-treesitter/nvim-treesitter", run = function() cmd('TSUpdate') end};
-    "nvim-telescope/telescope.nvim";
-    "nvim-telescope/telescope-fzy-native.nvim";
-    "tpope/vim-sensible";
-    "tpope/vim-sleuth";
-    "tpope/vim-surround";
-    "tpope/vim-repeat";
-    "TimUntersberger/neogit";
-    "lewis6991/gitsigns.nvim";
-    "terrortylor/nvim-comment";
-    "raimondi/delimitmate";
-    -- "ishan9299/nvim-solarized-lua";
-    "EdenEast/nightfox.nvim";
-    "hoob3rt/lualine.nvim";
-    "akinsho/toggleterm.nvim";
-    "famiu/bufdelete.nvim";
-    "lukas-reineke/indent-blankline.nvim";
-    "matze/vim-move";
-    "RRethy/vim-illuminate";
-    -- "glepnir/lspsaga.nvim";
-    -- "chipsenkbeil/distant.nvim";
-    -- "phaazon/hop.nvim";
-    -- "kevinhwang91/promise-async";
-    -- "kevinhwang91/nvim-ufo";
-    -- "folke/trouble.nvim";
+    "nvim-lua/plenary.nvim",
+    "neovim/nvim-lspconfig",
+    "williamboman/mason-lspconfig.nvim",
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text",
+    "jose-elias-alvarez/null-ls.nvim",
+    "williamboman/mason.nvim",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    {"nvim-treesitter/nvim-treesitter", run = function() cmd('TSUpdate') end},
+    "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-telescope/telescope.nvim",
+    "nvim-telescope/telescope-fzy-native.nvim",
+    "nvim-telescope/telescope-dap.nvim",
+    "tpope/vim-sensible",
+    "tpope/vim-sleuth",
+    "tpope/vim-surround",
+    "tpope/vim-repeat",
+    "tpope/vim-dispatch",
+    "TimUntersberger/neogit",
+    "lewis6991/gitsigns.nvim",
+    "terrortylor/nvim-comment",
+    "raimondi/delimitmate",
+    -- "ishan9299/nvim-solarized-lua",
+    "EdenEast/nightfox.nvim",
+    "hoob3rt/lualine.nvim",
+    "akinsho/toggleterm.nvim",
+    "famiu/bufdelete.nvim",
+    "lukas-reineke/indent-blankline.nvim",
+    "matze/vim-move",
+    "RRethy/vim-illuminate",
+    "folke/lua-dev.nvim",
+    -- "glepnir/lspsaga.nvim",
+    -- "chipsenkbeil/distant.nvim",
+    -- "phaazon/hop.nvim",
+    -- "kevinhwang91/promise-async",
+    -- "kevinhwang91/nvim-ufo",
+    -- "folke/trouble.nvim",
 })
 
 opt.colorcolumn = '80'
@@ -143,11 +148,26 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
+-- Center after pgup/pgdwn
+vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
+vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
+
+if vim.g.neovide == true then
+  vim.o.guifont = 'JetBrainsMono Nerd Font:h14'
+  vim.keymap.set(
+    'n',
+    '<F11>',
+    ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>",
+    {}
+  )
+end
+
 -- Source other config files
 require("thmxvr.treesitter")
 require("thmxvr.completion")
 require("thmxvr.lsp")
 require("thmxvr.telescope")
+require("thmxvr.dap")
 
 vim.cmd([[
 " press <Tab> to expand or jump in a snippet. These can also be mapped separately
@@ -159,6 +179,22 @@ snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
 snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
 ]]
 )
+
+require("treesitter-context").setup({
+  patterns = {
+    default = {
+      'class',
+      'struct',
+      'function',
+      'method',
+      'for',
+      'while',
+      'if',
+      'switch',
+      'case',
+    }
+  }
+})
 
 require('gitsigns').setup()
 
@@ -172,4 +208,10 @@ require('nvim_comment').setup()
 require("indent_blankline").setup()
 
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.mxx set ft=cpp')
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+  end
+})
 
