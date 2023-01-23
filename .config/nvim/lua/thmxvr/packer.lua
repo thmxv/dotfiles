@@ -89,19 +89,13 @@ return require("packer").startup(
     use { -- Colorscheme
       'EdenEast/nightfox.nvim',
       config = function() vim.cmd.colorscheme("nightfox") end,
-      -- config = ":colorscheme nightfox",
       after = "indent-blankline.nvim",
     }
   end
 )
 
--- "jose-elias-alvarez/null-ls.nvim",
 -- "tpope/vim-surround",
--- "tpope/vim-repeat",
 -- "matze/vim-move",
 -- "nvie/vim-togglemouse",
 -- "folke/trouble.nvim",
-
 -- "chipsenkbeil/distant.nvim",
--- "kevinhwang91/promise-async",
--- "kevinhwang91/nvim-ufo",
