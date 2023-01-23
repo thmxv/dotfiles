@@ -51,6 +51,10 @@ return require("packer").startup(
     use 'tpope/vim-fugitive' -- Git
     use "tpope/vim-sleuth" -- Auto detect tabsize and other buffer settings
     use 'tpope/vim-dispatch' -- Async build/exec with result in quickfix list
+    use "tpope/vim-surround"
+    use "tpope/vim-repeat"
+    use "matze/vim-move" -- <Alt>h/j/k/l to move selection
+    use "nvie/vim-togglemouse" -- <F12> To use terminal mouse commands
     use {
       'famiu/bufdelete.nvim',
       config = function()
@@ -93,9 +97,3 @@ return require("packer").startup(
     }
   end
 )
-
--- "tpope/vim-surround",
--- "matze/vim-move",
--- "nvie/vim-togglemouse",
--- "folke/trouble.nvim",
--- "chipsenkbeil/distant.nvim",
