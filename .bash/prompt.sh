@@ -1,25 +1,31 @@
-# solarized colors
+# nightfox colors
 declare -A TRUELINE_COLORS=(
-    # dark theme bg colors
-    [base03]='0;43;54'      # bg default
-    [base02]='7;54;66'      # bg higlights
-    # fg colors
-    [base01]='88;110;117'
-    [base00]='101;123;131'  # light theme primary fg
-    [base0]='131;148;150'   # dark theme primary fg
-    [base1]='147;161;161'
-    # light theme bg colors
-    [base2]='238;232;213'   # bg highlight
-    [base3]='253;246;227'   # bg default
-    # accent colors
-    [yellow]='181;137;0'
-    [orange]='203;75;22'
-    [red]='220;50;47'
-    [magenta]='211;54;130'
-    [violet]='108;113;196'
-    [blue]='38;139;210'
-    [cyan]='42;161;152'
-    [green]='133;153;0'
+    [bg0]='19;26;36'
+    [bg1]='25;35;48'  # Default bg
+    [bg2]='33;46;63'
+    [bg3]='41;57;79'
+    [bg4]='57;80;109'
+
+    [fg0]='214;214;215'
+    [fg1]='205;206;207'  # Default fg
+    [fg2]='174;175;176'
+    [fg3]='113;131;155'
+
+    [sel0]='43;59;81'  # Default selection bg
+    [sel1]='60;83;114'
+
+    [comment]='115;148;145'
+
+    [black]='57;59;68'
+    [blue]='113;156;214'
+    [cyan]='99;205;207'
+    [green]='129;178;154'
+    [magenta]='157;121;214'
+    [orange]='244;162;97'
+    [pink]='214;122;210'
+    [red]='201;79;109'
+    [white]='223;223;224'
+    [yellow]='219;192;116'
 )
 
 declare -A TRUELINE_SYMBOLS=(
@@ -29,31 +35,25 @@ declare -A TRUELINE_SYMBOLS=(
     [exit_status]=''
 )
 
-# because the terminal use dark theme and we want to avoid to high contrasts
-# we use solarized fg colors for bg and light theme bg colors for fg
-
 declare -a TRUELINE_SEGMENTS=(
-    # 'cmd_duration,base03,base01,normal'
-    'exit_status,red,base02,bold'
+    'exit_status,red,bg2,bold'
     'my_newline,,,'
-    'user,base03,base00,bold'
-    'aws_profile,base03,orange,bold'
-    'venv,base03,violet,bold'
-    'conda_env,base03,violet,bold'
-    'git,base03,base1,normal'
-    'working_dir,base03,base01,normal'
-    'read_only,base03,orange,normal'
+    'user,bg1,fg2,bold'
+    'venv,bg1,violet,bold'
+    'git,bg1,fg1,normal'
+    'working_dir,bg1,fg3,normal'
+    'read_only,bg1,orange,normal'
     'my_newline,,,'
-    'bg_jobs,base03,yellow,normal'
-    'prompt_char,base03,base01,bold'
+    'bg_jobs,bg1,yellow,normal'
+    'prompt_char,bg1,fg2,bold'
 )
 
-TRUELINE_GIT_MODIFIED_COLOR='orange'
-TRUELINE_GIT_BEHIND_AHEAD_COLOR='base03'
-TRUELINE_USER_ROOT_COLORS=('base03' 'orange')
+TRUELINE_GIT_MODIFIED_COLOR='red'
+TRUELINE_GIT_BEHIND_AHEAD_COLOR='bg1'
+TRUELINE_USER_ROOT_COLORS=('bg1' 'orange')
 # TRUELINE_USER_ALWAYS_SHOW_HOSTNAME=true
 TRUELINE_WORKING_DIR_SPACE_BETWEEN_PATH_SEPARATOR=true
-TRUELINE_PROMPT_CHAR_ROOT_COLORS=('base03' 'orange')
+TRUELINE_PROMPT_CHAR_ROOT_COLORS=('bg1' 'orange')
 
 _trueline_my_newline_segment() {
     local fg_color="$1"
