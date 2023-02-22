@@ -33,10 +33,8 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
 fi
 
-# Powerline style prompt
-if [[ "$OSTYPE" != "msys" ]] && [ -f $HOME/.bash/prompt.sh ]; then
-    source $HOME/.bash/prompt.sh
-fi
+# Starship prompt
+eval "$(starship init bash)"
 
 # Python pip executable script path
 PATH="$PATH:$HOME/.local/bin"
