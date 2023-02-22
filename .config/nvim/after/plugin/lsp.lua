@@ -5,7 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'clangd',
   'pyright',
-  'sumneko_lua',
+  'lua_ls',
 })
 
 lsp.nvim_workspace()
