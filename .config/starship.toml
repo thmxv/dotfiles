@@ -75,29 +75,35 @@ sel1 = "#3c5372"    # Popup sel bg, search bg
 [status]
 disabled = false
 symbol = '✗'
-format = "[ $symbol $status $common_meaning$signal_name ]($style)[](fg:sel0)\n"
-style = 'bold red bg:sel0'
+format = "[ $symbol $status $common_meaning$signal_name ]($style bg:sel0)[](fg:sel0)\n"
+style = 'bold red'
 
 [username]
 show_always = true
-format = '[ $user ]($style)'
-style_user = 'bold bg1 bg:fg2'
-style_root = 'bold red bg:fg2'
+format = '[ $user ]($style bg:fg2)'
+style_user = 'bold bg1'
+style_root = 'bold red'
 
 [hostname]
 ssh_only = true
 ssh_symbol = ' '
-format = '[](bg1 bg:fg2)[ $ssh_symbol$hostname ]($style)'
-style = 'bold bg1 bg:fg2'
+format = '[](fg:bg1 bg:fg2)[ $ssh_symbol$hostname ]($style bg:fg2)'
+style = 'bold bg1'
+
+[localip]
+disabled = false
+ssh_only = true
+format = '[](fg:bg1 bg:fg2)[ $localipv4 ]($style bg:fg2)'
+style = 'bold purple'
 
 [directory]
 truncate_to_repo = false
 truncation_symbol = '…/'
 read_only = ""
 home_symbol = ""
-format = '[ $path ]($style)[$read_only]($read_only_style)'
-style = 'bold bg1 bg:fg1'
-read_only_style = 'red bg:fg1'
+format = '[ $path ]($style bg:fg1)[$read_only]($read_only_style)'
+style = 'bold bg1'
+read_only_style = 'red'
 use_os_path_sep = false
 # [directory.substitutions]
 # '/' = '  '
