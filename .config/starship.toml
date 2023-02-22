@@ -3,6 +3,7 @@
 
 # Inserts a blank line between shell prompts
 add_newline = true
+command_timeout = 2000
 
 format = """
 $status\
@@ -136,6 +137,7 @@ style = 'fg1'
 [c]
 symbol = " "
 format = '[ $symbol($version(-$name) )]($style dimmed bg:bg4)'
+detect_extensions = [ "c", "cpp", "cxx", "cc", "h", "hpp", "hxx", "mpp", "mxx" ]
 
 [cmake]
 format = '[ $symbol($version )]($style dimmed bg:bg4)'
