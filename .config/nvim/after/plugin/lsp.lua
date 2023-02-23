@@ -5,19 +5,20 @@ local lsp_zero = require("lsp-zero").preset({
   suggest_lsp_servers = false,
 })
 
-lsp_zero.ensure_installed({
-  'lua_ls',
-})
+-- List of servers to intall with Mason without asking
+-- lsp_zero.ensure_installed({'<server>', })
 
-lsp_zero.nvim_workspace()
-
--- Use system wide LSP to avoid version conflicts with toolchain
+-- Use system wide language servers to avoid version conflicts with toolchain
+lsp_zero.configure('lua_ls', { force_setup = true, })
 lsp_zero.configure('clangd', { force_setup = true, })
 lsp_zero.configure('pyright', { force_setup = true, })
 lsp_zero.configure('rust_analyzer', {
   force_setup = true,
   cmd = { "rustup", "run", "stable", "rust-analyzer", },
 })
+
+-- Configure Lua language server for neovim
+lsp_zero.nvim_workspace()
 
 lsp_zero.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr }
@@ -31,7 +32,7 @@ lsp_zero.on_attach(function(client, bufnr)
   -- gi: Lists all the implementations for the symbol under the cursor in the quickfix window. See :help vim.lsp.buf.implementation().
   -- go: Jumps to the definition of the type of the symbol under the cursor. See :help vim.lsp.buf.type_definition().
   -- gr: Lists all the references to the symbol under the cursor in the quickfix window. See :help vim.lsp.buf.references().
-  -- <Shift-k>: Displays signature information about the symbol under the cursor in a floating window. See :help vim.lsp.buf.signature_help(). If a mapping already exists for this key this function is not bound.
+  -- <Ctl-k>: Displays signature information about the symbol under the cursor in a floating window. See :help vim.lsp.buf.signature_help(). If a mapping already exists for this key this function is not bound.
   -- <F2>: Renames all references to the symbol under the cursor. See :help vim.lsp.buf.rename().
   -- <F4>: Selects a code action available at the current cursor position. See :help vim.lsp.buf.code_action().
   -- gl: Show diagnostics in a floating window. See :help vim.diagnostic.open_float().
@@ -47,6 +48,7 @@ lsp_zero.setup_nvim_cmp({
   },
 })
 
+-- Needs to be after all the lsp_zero configuration
 lsp_zero.setup()
 
 -- Change gutter diagnostic symbols
