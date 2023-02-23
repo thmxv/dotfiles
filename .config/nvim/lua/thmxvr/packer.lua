@@ -1,4 +1,4 @@
-return require("packer").startup(
+return require("packer").startup({
   function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -45,8 +45,10 @@ return require("packer").startup(
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
     --
+    use { 'TimUntersberger/neogit',
+      requires = 'nvim-lua/plenary.nvim',
+    }
     use 'mbbill/undotree' -- TODO: Configure keymap to toggle
-    use 'tpope/vim-fugitive' -- Git
     use "tpope/vim-sleuth" -- Auto detect tabsize and other buffer settings
     use 'tpope/vim-dispatch' -- Async build/exec with result in quickfix list
     use "tpope/vim-surround"
@@ -93,5 +95,13 @@ return require("packer").startup(
       config = function() vim.cmd.colorscheme("nightfox") end,
       after = "indent-blankline.nvim",
     }
-  end
-)
+  end,
+  -- Open in floating window
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'none' })
+      end
+    }
+  }
+})
