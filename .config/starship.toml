@@ -1,9 +1,9 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
 add_newline = true
 command_timeout = 2000
+continuation_prompt = "[∙∙∙](bg1 bg:fg2)[](fg2) "
 
 format = """
 $status\
@@ -75,8 +75,13 @@ sel1 = "#3c5372"    # Popup sel bg, search bg
 
 [status]
 disabled = false
-symbol = '✗'
-format = "[ $symbol $status $common_meaning$signal_name ]($style bg:sel0)[](fg:sel0)\n"
+map_symbol = true
+symbol = ' '
+not_found_symbol = ' '
+not_executable_symbol = ' '
+signal_symbol = '󱐋 '
+sigint_symbol = '󱐋 '
+format = "[ ✗ $status: $symbol$common_meaning$maybe_int$signal_name $signal_number ]($style bg:sel0)[](fg:sel0)\n"
 style = 'bold red'
 
 [username]
