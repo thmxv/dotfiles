@@ -76,9 +76,9 @@ sel1 = "#3c5372"    # Popup sel bg, search bg
 [status]
 disabled = false
 map_symbol = true
-symbol = ' '
-not_found_symbol = ' '
-not_executable_symbol = ' '
+symbol = ' '
+not_found_symbol = ' '
+not_executable_symbol = ' '
 signal_symbol = '󱐋 '
 sigint_symbol = '󱐋 '
 format = "[ ✗ $status: $symbol$common_meaning$maybe_int$signal_name $signal_number ]($style bg:sel0)[](fg:sel0)\n"
@@ -135,7 +135,7 @@ deleted = '✗'
 style = 'bold orange'
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 format = '[ $symbol$version ]($style dimmed bg:bg4)'
 style = 'fg1'
 
@@ -209,16 +209,16 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [meson]
-symbol = "喝 "
+symbol = "󰔷 "
 
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
-symbol = " "
+symbol = " "
 
 [nodejs]
 symbol = " "
@@ -235,10 +235,10 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "﯑ "
+Garuda = "󰛓 "
 Gentoo = " "
 HardenedBSD = "ﲊ "
-Illumos = " "
+Illumos = "󰈸 "
 Linux = " "
 Macos = " "
 Manjaro = " "
@@ -247,19 +247,19 @@ MidnightBSD = " "
 Mint = " "
 NetBSD = " "
 NixOS = " "
-OpenBSD = " "
+OpenBSD = " "
 openSUSE = " "
-OracleLinux = " "
+OracleLinux = "󰌷 "
 Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
 Redox = " "
-Solus = "ﴱ "
+Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "󰖳 "
 
 [rlang]
 symbol = "ﳒ "

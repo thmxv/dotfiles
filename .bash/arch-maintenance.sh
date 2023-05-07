@@ -17,7 +17,7 @@ upgrade_system_config () {
 }
 
 clean_package_cache () {
-    sudo paccache -r
+    sudo paccache -rk1
 }
 
 remove_orphan_packages () {

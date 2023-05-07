@@ -44,7 +44,7 @@ dap.configurations.cpp = {
       return last_cmd
     end,
     args = function()
-      local args = vim.fn.input("Arguments: ", last_args)
+      local args = vim.fn.input("Arguments: ", last_args, "file")
       last_args = args
       local result = vim.split(args, " ", {})
       for k, v in pairs(result) do
