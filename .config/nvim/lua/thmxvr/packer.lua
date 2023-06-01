@@ -1,7 +1,7 @@
 return require("packer").startup({
 	function(use)
 		-- Packer can manage itself
-		use("wbthomason/packer.nvim")
+		use({ "wbthomason/packer.nvim" })
 		-- LSP
 		use({
 			"VonHeikemen/lsp-zero.nvim",
@@ -9,7 +9,7 @@ return require("packer").startup({
 			requires = {
 				-- LSP Support
 				{ "neovim/nvim-lspconfig" },
-				{ "williamboman/mason.nvim" },
+				{ "williamboman/mason.nvim", run = ":MasonUpdate" },
 				{ "williamboman/mason-lspconfig.nvim" },
 				-- Autocompletion
 				{ "hrsh7th/nvim-cmp" },
@@ -52,7 +52,7 @@ return require("packer").startup({
 		use("theHamsta/nvim-dap-virtual-text")
 		--
 		use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
-		use("mbbill/undotree") -- TODO: Configure keymap to toggle
+		use("mbbill/undotree")
 		use("tpope/vim-sleuth") -- Auto detect tabsize and other buffer settings
 		use("tpope/vim-dispatch") -- Async build/exec with result in quickfix list
 		use("tpope/vim-surround")
@@ -90,7 +90,8 @@ return require("packer").startup({
 				require("Comment").setup()
 			end,
 		})
-		use({ -- Vertical lines in indentation
+		use({
+			-- Vertical lines in indentation
 			"lukas-reineke/indent-blankline.nvim",
 			config = function()
 				require("indent_blankline").setup()
@@ -100,25 +101,28 @@ return require("packer").startup({
 		--   "karb94/neoscroll.nvim",
 		--   config = function() require("neoscroll").setup() end,
 		-- }
-		use({ -- Colorscheme
+		use({
+			-- Colorscheme
 			"EdenEast/nightfox.nvim",
 			config = function()
 				vim.cmd.colorscheme("nightfox")
 			end,
 			after = "indent-blankline.nvim",
 		})
+		use("folke/trouble.nvim")
 		use({
-			"folke/trouble.nvim",
-			requires = {
-				"nvim-tree/nvim-web-devicons",
-				config = function()
-					require("nvim-web-devicons").setup({ color_icons = false })
-				end,
-			},
+			"folke/todo-comments.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
 			config = function()
-				require("trouble").setup({})
+				require("todo-comments").setup({
+					-- highlight = {
+					-- 	keyword = "wide_fg",
+					-- 	after = "",
+					-- },
+				})
 			end,
 		})
+		use("folke/neodev.nvim")
 	end,
 	-- Open in floating window
 	config = {

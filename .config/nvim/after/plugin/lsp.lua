@@ -1,3 +1,5 @@
+require("neodev").setup({})
+
 local lsp_zero = require("lsp-zero").preset({
 	name = "minimal",
 	set_lsp_keymaps = true,
@@ -68,7 +70,7 @@ null_ls.setup({
 })
 
 -- Change gutter diagnostic symbols
-local signs = { Error = " ", Warn = " ", Info = " ", Hint = " " }
+local signs = { Error = "󰅚 ", Warn = " ", Info = "󰋽 ", Hint = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl })
@@ -83,10 +85,10 @@ require("lualine").setup({
 			{
 				"diagnostics",
 				symbols = {
-					error = " ",
-					warn = " ",
-					info = " ",
-					hint = " ",
+					error = "󰅚 ",
+					warn = " ",
+					info = "󰋽 ",
+					hint = " ",
 				},
 			},
 		},
@@ -95,5 +97,16 @@ require("lualine").setup({
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
-	extensions = {'toggleterm', 'trouble', 'quickfix'},
+	extensions = { "toggleterm", "trouble", "quickfix" },
+})
+
+require("trouble").setup({
+	icons = false,
+	signs = {
+		error = "󰅚",
+		warning = "",
+		hint = "",
+		information = "󰋽",
+		other = "󰗡",
+	},
 })
