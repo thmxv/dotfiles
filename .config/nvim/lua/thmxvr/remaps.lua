@@ -1,17 +1,17 @@
 -- vim.g.mapleader = " "
 
 -- Quick open/reload settings
-vim.keymap.set('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
-vim.keymap.set('n', '<leader>sv',
-    '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>'
-)
+-- vim.keymap.set('n', '<leader>ev', '<cmd>e $MYVIMRC<cr>')
+-- vim.keymap.set('n', '<leader>sv',
+--     '<cmd>source $MYVIMRC <bar> doautocmd BufRead<cr>'
+-- )
 
 -- Clear search higlight on ESC
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr><esc>')
 
 -- Center after pgup/pgdwn
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz')
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- Termial helper
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')

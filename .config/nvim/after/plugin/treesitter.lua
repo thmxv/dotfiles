@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "help", "c", "lua", "rust", "python", "cmake", "bash", "cpp",
+    "c", "lua", "rust", "python", "cmake", "bash", "cpp",
     "devicetree", "glsl", "go", "json", "make", "teal", "toml", "vim"
   },
   highlight = {
@@ -48,6 +48,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require("treesitter-context").setup({
+  max_lines = 10,
   patterns = {
     default = {
       'class',

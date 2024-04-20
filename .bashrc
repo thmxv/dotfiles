@@ -56,7 +56,8 @@ alias xargs='xargs '
 export VISUAL=nvim
 export EDITOR=nvim
 export DIFFPROG='nvim -d'
-export MANPAGER='nvim -c "%! col -b" -c "set ft=man nomod | let &titlestring=$MAN_PN"'
+# export MANPAGER='nvim -c "%! col -b" -c "set ft=man nomod | let &titlestring=$MAN_PN"'
+export MANPAGER='nvim +Man!'
 alias pacdiff='sudo -H DIFFPROG="nvim -d" pacdiff'
 
 alias arch-maintenance='bash $HOME/.bash/arch-maintenance.sh'
