@@ -21,9 +21,9 @@ if [ -f /etc/profile.d/vte.sh ]; then
 fi
 
 # Cross compilation toolchain
-if [ -f "$HOME/Projects/sp3/current_toolchains/set_path.sh" ]; then
-    source "$HOME/Projects/sp3/current_toolchains/set_path.sh"
-fi
+#if [ -f "$HOME/Projects/sp3/current_toolchains/set_path.sh" ]; then
+#    source "$HOME/Projects/sp3/current_toolchains/set_path.sh"
+#fi
 
 # launch ssh-agent if not running yet and set env to use it
 if [[ ! `ps -u "$UID" | grep ssh-agent` ]]; then
@@ -43,8 +43,11 @@ PATH="$PATH:$HOME/.cargo/bin"
 # go binaries
 PATH="$PATH:$HOME/go/bin"
 
+set -o vi
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias icat='kitty +kitten icat'
 
 # alias for dotfiles git and autocomplete alias
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

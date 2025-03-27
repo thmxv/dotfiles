@@ -13,6 +13,8 @@ require'nvim-treesitter.configs'.setup {
       lookahead = true,
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
+        ["ab"] = "@block.outer",
+        ["ib"] = "@block.inner",
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
@@ -27,28 +29,34 @@ require'nvim-treesitter.configs'.setup {
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
+      goto_previous_start = {
+        ["[b"] = "@block.outer",
+        ["[f"] = "@function.outer",
+        ["[c"] = "@class.outer",
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
+        ["]b"] = "@block.outer",
+        ["]f"] = "@function.outer",
+        ["]c"] = "@class.outer",
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
+        ["[B"] = "@block.outer",
+        ["[F"] = "@function.outer",
+        ["[C"] = "@class.outer",
+      },
+      goto_next_start = {
+        ["]B"] = "@block.outer",
+        ["]F"] = "@function.outer",
+        ["]C"] = "@class.outer",
       },
     },
   },
 }
 
 require("treesitter-context").setup({
-  max_lines = 10,
+  max_lines = 6,
+  multiline_threshold = 1,
+  trim_scope = "inner",
   patterns = {
     default = {
       'class',

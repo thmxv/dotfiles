@@ -12,34 +12,52 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- LSP
+  "neovim/nvim-lspconfig",
+  -- Blink completion
   {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    dependencies = {
-      -- LSP Support
-      "neovim/nvim-lspconfig",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      -- Autocompletion
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",
-      -- { "hrsh7th/cmp-buffer" },
-      -- { "hrsh7th/cmp-path" },
-      -- { "saadparwaiz1/cmp_luasnip" },
-      -- { "hrsh7th/cmp-nvim-lua" },
-      -- Snippets
-      {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        build = "make install_jsregexp",
-      }
-      -- { "rafamadriz/friendly-snippets" },
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      -- keymap = { preset = 'default' },
+      keymap = { preset = 'enter' },
+      appearance = {
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono'
+      },
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = false } },
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    -- "jay-babu/mason-null-ls.nvim",
-    -- "jay-babu/mason-nvim-dap.nvim",
+    opts_extend = { "sources.default" }
   },
   -- Telescope
   {
@@ -107,7 +125,26 @@ require("lazy").setup({
   },
   { -- Status line powerline style in lua
     "hoob3rt/lualine.nvim",
-    -- config = function() require('lualine').setup() end,
+    config = function()
+      require("lualine").setup({
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = {
+            "branch",
+            "diff",
+            {
+              "diagnostics",
+              symbols = { error = "󰅚 ", warn = " ", info = "󰋽 ", hint = " ", },
+            },
+          },
+          lualine_c = { "filename" },
+          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
+        extensions = { "toggleterm", "trouble", "quickfix" },
+      })
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -115,12 +152,12 @@ require("lazy").setup({
       require("gitsigns").setup()
     end,
   },
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  },
+  -- {
+  --   "numToStr/Comment.nvim",
+  --   config = function()
+  --     require("Comment").setup()
+  --   end,
+  -- },
   {
     -- Vertical lines in indentation
     "lukas-reineke/indent-blankline.nvim",
@@ -141,10 +178,71 @@ require("lazy").setup({
     end,
     dependencies = "indent-blankline.nvim",
   },
-  "folke/trouble.nvim",
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+    config = function()
+      require("trouble").setup({
+        -- icons = false,
+        -- signs = {
+        --   error = "󰅚",
+        --   warning = "",
+        --   hint = "",
+        --   information = "󰋽",
+        --   other = "󰗡",
+        -- },
+      })
+    end,
+  },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup({
+        keywords = {
+          FIX = { icon = " " },
+          TODO = { icon = " " },
+          HACK = { icon = " " },
+          WARN = { icon = " " },
+          PERF = { icon = "󰔛 " },
+          NOTE = { icon = "󱜾 " },
+          TEST = { icon = " " },
+        },
+      })
+    end,
   },
   {
     "folke/neodev.nvim",
@@ -152,4 +250,6 @@ require("lazy").setup({
       require("neodev").setup({})
     end,
   },
+  "DingDean/wgsl.vim",
+  "projectfluent/fluent.vim",
 })
